@@ -1,70 +1,54 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>关于我们 | UNICEF</title>
-    <!-- 使用 UNICEF 品牌的 Noto Sans 字体 -->
+    <title>Quiénes somos | UNICEF</title>
+    <!-- Fuente Noto Sans (la misma que usa UNICEF) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
-        /* ----- 全局重置与基础样式 ----- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ===== RESET Y BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans', 'Helvetica Neue', Arial, sans-serif;
             color: #1a1a1a;
-            background-color: #ffffff;
+            background: #fff;
             line-height: 1.6;
         }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* ----- 顶部导航占位 (模拟 UNICEF 风格) ----- */
+        /* ===== HEADER ===== */
         .site-header {
-            background-color: #ffffff;
+            background: rgba(255,255,255,0.96);
+            backdrop-filter: blur(4px);
             border-bottom: 1px solid #eaeaea;
             padding: 16px 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(4px);
         }
-
         .header-inner {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
         }
-
         .logo-icon {
             font-size: 28px;
             font-weight: 700;
             color: #1c3664;
             letter-spacing: -0.5px;
         }
-
-        .logo-icon span {
-            color: #00a1b0;
-        }
-
+        .logo-icon span { color: #00a1b0; }
         .logo-text {
             font-size: 14px;
             font-weight: 400;
@@ -72,41 +56,29 @@
             border-left: 2px solid #ddd;
             padding-left: 12px;
         }
-
         .nav-links {
             display: flex;
             gap: 28px;
             list-style: none;
             font-size: 15px;
             font-weight: 500;
+            flex-wrap: wrap;
         }
-
         .nav-links a {
             text-decoration: none;
             color: #1a1a1a;
             transition: color 0.2s;
         }
-
-        .nav-links a:hover {
-            color: #1c3664;
-        }
-
+        .nav-links a:hover { color: #1c3664; }
         .nav-links a.active {
             color: #1c3664;
             border-bottom: 3px solid #1c3664;
             padding-bottom: 4px;
         }
 
-        /* ----- 主内容区域 ----- */
-        .main-content {
-            padding: 60px 0 80px;
-        }
-
-        /* 页面标题区 */
-        .page-header {
-            margin-bottom: 48px;
-        }
-
+        /* ===== MAIN ===== */
+        .main-content { padding: 60px 0 80px; }
+        .page-header { margin-bottom: 48px; }
         .page-header h1 {
             font-size: 48px;
             font-weight: 700;
@@ -114,27 +86,19 @@
             letter-spacing: -0.5px;
             margin-bottom: 12px;
         }
-
         .page-header .subtitle {
             font-size: 20px;
             font-weight: 400;
             color: #444;
             max-width: 700px;
         }
-
-        /* 内容区块 */
-        .content-section {
-            margin-bottom: 56px;
-        }
-
+        .content-section { margin-bottom: 56px; }
         .content-section h2 {
             font-size: 30px;
             font-weight: 700;
             color: #1c3664;
             margin-bottom: 16px;
-            letter-spacing: -0.3px;
         }
-
         .content-section h3 {
             font-size: 22px;
             font-weight: 600;
@@ -142,49 +106,63 @@
             margin-top: 32px;
             margin-bottom: 12px;
         }
-
         .content-section p {
             font-size: 17px;
             color: #2d2d2d;
             margin-bottom: 18px;
             max-width: 800px;
         }
-
-        .content-section .highlight-box {
-            background-color: #f5f8fc;
+        .highlight-box {
+            background: #f5f8fc;
             border-left: 6px solid #1c3664;
             padding: 24px 30px;
             border-radius: 4px;
             margin: 28px 0;
         }
+        .highlight-box p { margin-bottom: 0; font-weight: 500; color: #1c3664; }
 
-        .content-section .highlight-box p {
-            margin-bottom: 0;
-            font-weight: 500;
-            color: #1c3664;
+        /* ===== IMÁGENES ===== */
+        .hero-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 20px 0 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .feature-image {
+            float: right;
+            width: 280px;
+            margin: 0 0 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+        @media (max-width: 700px) {
+            .feature-image {
+                float: none;
+                width: 100%;
+                margin: 20px 0;
+            }
         }
 
-        /* 卡片网格 (用于 "了解 UNICEF" 部分) */
+        /* ===== CARDS ===== */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 30px;
             margin: 32px 0 16px;
         }
-
         .card {
             background: #f9fafb;
             border-radius: 12px;
             padding: 28px 24px;
-            transition: box-shadow 0.25s ease, transform 0.2s ease;
             border: 1px solid #eaedf2;
+            transition: box-shadow 0.25s ease, transform 0.2s ease;
         }
-
         .card:hover {
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.06);
             transform: translateY(-2px);
         }
-
         .card .card-tag {
             display: inline-block;
             font-size: 12px;
@@ -197,20 +175,8 @@
             border-radius: 20px;
             margin-bottom: 14px;
         }
-
-        .card h4 {
-            font-size: 20px;
-            font-weight: 600;
-            color: #1c3664;
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            font-size: 15px;
-            color: #3d3d3d;
-            margin-bottom: 16px;
-        }
-
+        .card h4 { font-size: 20px; font-weight: 600; color: #1c3664; margin-bottom: 8px; }
+        .card p { font-size: 15px; color: #3d3d3d; margin-bottom: 16px; }
         .card a {
             color: #1c3664;
             font-weight: 600;
@@ -218,38 +184,22 @@
             border-bottom: 2px solid transparent;
             transition: border-color 0.2s;
         }
+        .card a:hover { border-bottom-color: #1c3664; }
 
-        .card a:hover {
-            border-bottom-color: #1c3664;
-        }
-
-        /* 号召性用语 (CTA) */
+        /* ===== CTA ===== */
         .cta-section {
             background: #1c3664;
-            color: #ffffff;
+            color: #fff;
             padding: 48px 40px;
             border-radius: 16px;
             margin: 48px 0 20px;
             text-align: center;
         }
-
-        .cta-section h2 {
-            color: #ffffff;
-            font-size: 32px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 18px;
-            max-width: 600px;
-            margin: 0 auto 24px;
-        }
-
+        .cta-section h2 { color: #fff; font-size: 32px; font-weight: 700; margin-bottom: 8px; }
+        .cta-section p { color: rgba(255,255,255,0.85); font-size: 18px; max-width: 600px; margin: 0 auto 24px; }
         .cta-button {
             display: inline-block;
-            background: #ffffff;
+            background: #fff;
             color: #1c3664;
             font-weight: 600;
             font-size: 16px;
@@ -258,13 +208,9 @@
             text-decoration: none;
             transition: background 0.2s, transform 0.15s;
         }
+        .cta-button:hover { background: #eef3fa; transform: scale(1.02); }
 
-        .cta-button:hover {
-            background: #eef3fa;
-            transform: scale(1.02);
-        }
-
-        /* 页脚 */
+        /* ===== FOOTER ===== */
         .site-footer {
             border-top: 1px solid #eaeaea;
             padding: 40px 0 32px;
@@ -272,240 +218,182 @@
             color: #666;
             font-size: 14px;
         }
-
         .footer-inner {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
         }
-
         .footer-links {
             display: flex;
             gap: 28px;
             flex-wrap: wrap;
         }
-
         .footer-links a {
             color: #555;
             text-decoration: none;
             transition: color 0.2s;
         }
+        .footer-links a:hover { color: #1c3664; }
 
-        .footer-links a:hover {
-            color: #1c3664;
-        }
-
-        /* 响应式 */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .header-inner {
-                flex-wrap: wrap;
-                gap: 12px;
-            }
-            .nav-links {
-                gap: 16px;
-                font-size: 14px;
-                flex-wrap: wrap;
-            }
-            .page-header h1 {
-                font-size: 34px;
-            }
-            .page-header .subtitle {
-                font-size: 17px;
-            }
-            .content-section h2 {
-                font-size: 26px;
-            }
-            .content-section h3 {
-                font-size: 20px;
-            }
-            .cta-section {
-                padding: 32px 20px;
-            }
-            .cta-section h2 {
-                font-size: 26px;
-            }
-            .footer-inner {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
+            .page-header h1 { font-size: 34px; }
+            .page-header .subtitle { font-size: 17px; }
+            .content-section h2 { font-size: 26px; }
+            .cta-section { padding: 32px 20px; }
+            .cta-section h2 { font-size: 26px; }
+            .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+            .nav-links { gap: 16px; font-size: 14px; }
         }
-
         @media (max-width: 480px) {
-            .container {
-                padding: 0 16px;
-            }
-            .nav-links {
-                gap: 12px;
-                font-size: 13px;
-            }
-            .logo-icon {
-                font-size: 22px;
-            }
-            .logo-text {
-                font-size: 12px;
-                padding-left: 8px;
-            }
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
+            .logo-icon { font-size: 22px; }
+            .logo-text { font-size: 12px; padding-left: 8px; }
+            .card-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== 页眉 ===== -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a href="#" class="logo">
-                <span class="logo-icon">UNICEF <span>●</span></span>
-                <span class="logo-text">为每个儿童</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#" class="active">关于我们</a></li>
-                <li><a href="#">我们的工作</a></li>
-                <li><a href="#">在哪里工作</a></li>
-                <li><a href="#">报告</a></li>
-                <li><a href="#">支持我们</a></li>
-            </ul>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="https://www.unicef.org/" class="logo" target="_blank">
+            <span class="logo-icon">UNICEF <span>●</span></span>
+            <span class="logo-text">Para cada niño</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="https://www.unicef.org/who-we-are" class="active">Quiénes somos</a></li>
+            <li><a href="https://www.unicef.org/our-work">Nuestro trabajo</a></li>
+            <li><a href="https://www.unicef.org/where-we-work">Dónde trabajamos</a></li>
+            <li><a href="https://www.unicef.org/reports">Informes</a></li>
+            <li><a href="https://www.unicef.org/get-involved">Apóyanos</a></li>
+        </ul>
+    </div>
+</header>
+
+<main class="main-content">
+    <div class="container">
+
+        <!-- Imagen principal (hero) – usar URL real de UNICEF si está disponible -->
+        <img class="hero-image" 
+             src="https://www.unicef.org/sites/default/files/styles/hero_desktop/public/UNI487659.jpg?itok=4q9_zqP9" 
+             alt="Niños sonriendo con el logo de UNICEF" 
+             onerror="this.src='https://via.placeholder.com/1200x400/1c3664/ffffff?text=UNICEF+—+Para+cada+niño'">
+
+        <div class="page-header">
+            <h1>Quiénes somos</h1>
+            <p class="subtitle">Trabajamos en más de 190 países y territorios para proteger los derechos de cada niño y niña.</p>
         </div>
-    </header>
 
-    <!-- ===== 主内容 ===== -->
-    <main class="main-content">
-        <div class="container">
-
-            <!-- 页面标题 -->
-            <div class="page-header">
-                <h1>关于我们</h1>
-                <p class="subtitle">联合国儿童基金会在全球超过 190 个国家和地区开展工作，保护每一名儿童的权利。</p>
+        <section class="content-section">
+            <h2>Protegemos los derechos de los niños y construimos un futuro mejor</h2>
+            <img class="feature-image" 
+                 src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a" 
+                 alt="Niños en clase" 
+                 onerror="this.src='https://via.placeholder.com/280x200/1c3664/ffffff?text=UNICEF'">
+            <p>UNICEF es el organismo de las Naciones Unidas que trabaja para garantizar que todos los niños y niñas, especialmente los más vulnerables y excluidos, puedan sobrevivir, crecer y desarrollar todo su potencial. Estamos presentes en más de 190 países y territorios, y nuestra labor se financia íntegramente con contribuciones voluntarias.</p>
+            <p>Proporcionamos y promovemos servicios de salud, educación y nutrición; protegemos a la infancia de la violencia y los abusos; llevamos agua limpia y saneamiento a las comunidades que más lo necesitan; y protegemos a las personas de los efectos del cambio climático y las enfermedades.</p>
+            <div class="highlight-box">
+                <p>💉 Como mayor proveedor de vacunas del mundo, UNICEF también gestiona el mayor almacén humanitario del planeta. Estamos sobre el terreno antes, durante y después de las emergencias para ofrecer ayuda que salva vidas.</p>
             </div>
+        </section>
 
-            <!-- 内容区块 1：使命 -->
-            <section class="content-section">
-                <h2>我们保护儿童的权利，守护他们的未来</h2>
-                <p>联合国儿童基金会（UNICEF）是联合国负责儿童事务的机构，致力于保护每一名儿童的权利，尤其是最弱势和最难触及的儿童。我们在全球超过 190 个国家和地区竭尽所能，帮助儿童生存、发展并充分发挥他们的潜力。</p>
-                <p>我们提供并倡导教育、健康和营养服务；保护儿童免受暴力和虐待；为有需要的人群带来清洁用水和卫生设施；并保护他们免受气候变化和疾病的影响。</p>
-                <div class="highlight-box">
-                    <p>💉 作为全球最大的疫苗供应商，UNICEF 还运营着全球最大的人道主义仓库。在紧急情况发生之前、期间和之后，我们都在现场提供拯救生命的帮助和希望。</p>
+        <section class="content-section">
+            <h3>Independientemente de quiénes sean o dónde estén</h3>
+            <p>Imparciales, apolíticos y neutrales: nos centramos en ayudar a cualquier niño que lo necesite. UNICEF se fundó tras la Segunda Guerra Mundial para ayudar a los niños cuyas vidas y futuro estaban en peligro, sin importar el bando en el que hubieran estado sus países. Nuestra misión no ha cambiado desde 1946. Hoy, UNICEF gestiona la mayor cadena de suministro humanitaria del mundo.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Contamos con un equipo global y aliados comprometidos</h3>
+            <p>Día tras día, nuestros más de 17.000 empleados en todo el mundo trabajan para proteger los derechos de la infancia, evitar que sufran daños, garantizar su crecimiento, educación y oportunidades para alcanzar su potencial. Nunca nos rendimos. UNICEF cuenta con décadas de experiencia sobre el terreno, alianzas sólidas y un espíritu innovador.</p>
+        </section>
+
+        <section class="content-section">
+            <h3>Somos responsables ante nosotros mismos</h3>
+            <p>Todas las personas que trabajan en UNICEF tienen la responsabilidad de proteger a las comunidades a las que servimos. Eso significa que nadie debe resultar perjudicado por los proyectos que apoyamos o por las personas asociadas a nosotros. UNICEF realiza investigaciones independientes para garantizar que cualquier violación de nuestras normas éticas o reglamentos sea investigada y sancionada.</p>
+            <p>También rendimos cuentas a nuestros donantes. Nuestro trabajo se financia exclusivamente con donaciones voluntarias y publicamos de forma transparente el origen y destino de los fondos.</p>
+        </section>
+
+        <!-- Llamada a la acción -->
+        <section class="cta-section">
+            <h2>¿Te unes a nosotros?</h2>
+            <p>Los mayores desafíos del mundo necesitan el mayor equipo del mundo.</p>
+            <a href="https://www.unicef.org/get-involved" class="cta-button" target="_blank">Colabora</a>
+        </section>
+
+        <!-- Cards de enlaces internos -->
+        <section class="content-section">
+            <h2>Más sobre UNICEF</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-tag">Página</span>
+                    <h4>Nuestro trabajo</h4>
+                    <p>Conoce los ámbitos en los que trabajamos: salud, educación, protección, agua y saneamiento, y más.</p>
+                    <a href="https://www.unicef.org/our-work">Ver más →</a>
                 </div>
-            </section>
-
-            <!-- 内容区块 2：中立与历史 -->
-            <section class="content-section">
-                <h3>无论他们是谁，无论他们身在何处</h3>
-                <p>公正、非政治、中立——我们专注于帮助每一名有需要的儿童。UNICEF 在第二次世界大战后成立，旨在帮助那些生命和未来受到威胁的儿童——无论他们的国家在战争中扮演什么角色。自 1946 年以来，我们的使命从未动摇。如今，UNICEF 运营着全球最大的人道主义仓库，并拥有无与伦比的物流网络。</p>
-            </section>
-
-            <!-- 内容区块 3：团队 -->
-            <section class="content-section">
-                <h3>我们持之以恒，拥有遍布全球的员工和合作伙伴</h3>
-                <p>日复一日，我们全球超过 17,000 名员工致力于保护儿童的权利，保护他们免受伤害，让他们健康成长、接受教育，并拥有公平的机会去实现自己的潜能。我们永不放弃。UNICEF 拥有数十年的实地经验、充满活力的合作伙伴关系以及对创新的热情。</p>
-            </section>
-
-            <!-- 内容区块 4：问责 -->
-            <section class="content-section">
-                <h3>我们对自己负责</h3>
-                <p>所有 UNICEF 人员都有责任保护我们工作所触及的社区。这意味着要确保没有人因为我们所支持的项目或与我们有关联的个人而受到伤害。UNICEF 进行独立调查，确保任何违反我们道德、规则或法规的人都会被追究责任。</p>
-                <p>我们也对支持我们的捐助者负责。我们的工作完全依靠自愿捐款，我们公开分享资金的来源和去向。</p>
-            </section>
-
-            <!-- CTA 区域 -->
-            <section class="cta-section">
-                <h2>你与我们同行吗？</h2>
-                <p>世界最大的挑战需要世界最大的团队。</p>
-                <a href="#" class="cta-button">加入我们</a>
-            </section>
-
-            <!-- 了解更多 UNICEF -->
-            <section class="content-section">
-                <h2>了解更多关于 UNICEF</h2>
-                <div class="card-grid">
-                    <div class="card">
-                        <span class="card-tag">页面</span>
-                        <h4>我们的工作</h4>
-                        <p>UNICEF 在全球超过 190 个国家和地区开展工作，保护每一名儿童的权利。</p>
-                        <a href="#">了解详情 →</a>
-                    </div>
-                    <div class="card">
-                        <span class="card-tag">页面</span>
-                        <h4>我们的足迹</h4>
-                        <p>探索我们在 190 多个国家和地区的工作。</p>
-                        <a href="#">查看地图 →</a>
-                    </div>
-                    <div class="card">
-                        <span class="card-tag">旗舰报告</span>
-                        <h4>世界儿童状况</h4>
-                        <p>对影响儿童的全球趋势最全面的分析，涵盖最重要的问题。</p>
-                        <a href="#">阅读报告 →</a>
-                    </div>
-                    <div class="card">
-                        <span class="card-tag">旗舰报告</span>
-                        <h4>UNICEF 年度报告</h4>
-                        <p>UNICEF 多年成就的缩影。</p>
-                        <a href="#">查看报告 →</a>
-                    </div>
+                <div class="card">
+                    <span class="card-tag">Página</span>
+                    <h4>Dónde trabajamos</h4>
+                    <p>Explora nuestra presencia en más de 190 países y territorios.</p>
+                    <a href="https://www.unicef.org/where-we-work">Ver mapa →</a>
                 </div>
-            </section>
-
-        </div>
-    </main>
-
-    <!-- ===== 页脚 ===== -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-links">
-                <a href="#">关于我们</a>
-                <a href="#">我们的工作</a>
-                <a href="#">在哪里工作</a>
-                <a href="#">报告</a>
-                <a href="#">支持我们</a>
-                <a href="#">隐私政策</a>
+                <div class="card">
+                    <span class="card-tag">Informe</span>
+                    <h4>Estado Mundial de la Infancia</h4>
+                    <p>El análisis más completo sobre las tendencias globales que afectan a la infancia.</p>
+                    <a href="https://www.unicef.org/reports/state-worlds-children">Leer informe →</a>
+                </div>
+                <div class="card">
+                    <span class="card-tag">Informe</span>
+                    <h4>Informe Anual de UNICEF</h4>
+                    <p>Resumen de nuestros logros y finanzas del último año.</p>
+                    <a href="https://www.unicef.org/reports/unicef-annual-report">Ver informe →</a>
+                </div>
             </div>
-            <div>
-                &copy; 2026 UNICEF. 保留所有权利。
-            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-links">
+            <a href="https://www.unicef.org/who-we-are">Quiénes somos</a>
+            <a href="https://www.unicef.org/our-work">Nuestro trabajo</a>
+            <a href="https://www.unicef.org/where-we-work">Dónde trabajamos</a>
+            <a href="https://www.unicef.org/reports">Informes</a>
+            <a href="https://www.unicef.org/get-involved">Apóyanos</a>
+            <a href="https://www.unicef.org/privacy">Política de privacidad</a>
         </div>
-    </footer>
+        <div>© 2026 UNICEF. Todos los derechos reservados.</div>
+    </div>
+</footer>
 
-    <!-- ===== 简单的交互脚本 (仅用于演示) ===== -->
-    <script>
-        (function() {
-            // 控制台提示
-            console.log('🇺🇳  UNICEF — 为每一名儿童');
-
-            // 为所有卡片链接添加点击追踪效果 (仅演示)
-            document.querySelectorAll('.card a').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('🔗 你点击了: ' + this.textContent.trim());
-                });
-            });
-
-            // CTA 按钮点击反馈
-            const ctaBtn = document.querySelector('.cta-button');
-            if (ctaBtn) {
-                ctaBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('💙 感谢你关注 UNICEF！让我们一起为儿童创造更美好的未来。');
-                });
+<!-- JavaScript para mantener la navegación activa y mostrar feedback -->
+<script>
+    (function() {
+        // Marcar el enlace activo según la URL actual (solo para la demo)
+        const currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            if (link.getAttribute('href') === currentPath || 
+                (currentPath === '/' && link.getAttribute('href') === '/who-we-are')) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
             }
+        });
 
-            // 导航链接点击演示 (不跳转)
-            document.querySelectorAll('.nav-links a').forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // 移除所有 active 状态
-                    document.querySelectorAll('.nav-links a').forEach(function(l) {
-                        l.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                });
+        // Feedback en tarjetas y CTA (opcional)
+        document.querySelectorAll('.card a, .cta-button').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Si el enlace es externo, se abrirá en nueva pestaña (target=_blank)
+                // No interferimos.
             });
+        });
 
-        })();
-    </script>
+        console.log('🇺🇳 UNICEF — clon estático para GitHub Pages');
+    })();
+</script>
 
 </body>
-  </html>
+    </html>
