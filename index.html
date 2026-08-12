@@ -20,18 +20,18 @@
         /* ===== HEADER ===== */
         .header {
             background: #003b5c;
-            padding: 12px 0;
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 2px solid #ffcf3f;
         }
-        .header-inner {
+        .header-top {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
+            padding: 12px 28px;
+            max-width: 1320px;
+            margin: 0 auto;
         }
         .logo-area {
             display: flex;
@@ -74,7 +74,7 @@
         }
         .donate-btn:hover { background: #f0b800; }
 
-        /* ===== HAMBURGUESA (mobile) ===== */
+        /* ===== HAMBURGUESA ===== */
         .hamburger {
             display: none;
             flex-direction: column;
@@ -97,7 +97,32 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-        /* ===== MOBILE MENU (desplegable a la derecha) ===== */
+        /* ===== NAV PRINCIPAL (desktop) ===== */
+        .main-nav {
+            background: #003b5c;
+            padding: 6px 28px 10px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            max-width: 1320px;
+            margin: 0 auto;
+        }
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 4px 0;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.2s;
+            cursor: pointer;
+        }
+        .main-nav a:hover { border-bottom-color: #ffcf3f; }
+
+        /* ===== MOBILE OVERLAY ===== */
         .mobile-overlay {
             display: none;
             position: fixed;
@@ -109,6 +134,8 @@
             z-index: 99;
         }
         .mobile-overlay.open { display: block; }
+
+        /* ===== MOBILE MENU (desliza desde la derecha) ===== */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -142,29 +169,6 @@
         }
         .mobile-menu a:last-child { border-bottom: 0; }
         .mobile-menu a:hover { color: #ffcf3f; }
-
-        /* ===== NAV PRINCIPAL ===== */
-        .main-nav {
-            background: #003b5c;
-            padding: 6px 0 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
-        .main-nav ul {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-            flex-wrap: wrap;
-        }
-        .main-nav a {
-            color: #ffffff;
-            font-weight: 600;
-            font-size: 15px;
-            padding: 4px 0;
-            border-bottom: 3px solid transparent;
-            transition: border-color 0.2s;
-            cursor: pointer;
-        }
-        .main-nav a:hover { border-bottom-color: #ffcf3f; }
 
         /* ===== HERO ===== */
         .hero {
@@ -506,6 +510,8 @@
             .footer-grid { grid-template-columns: 1fr; }
             .article-page h1 { font-size: 26px; }
             .container { padding: 0 16px; }
+            .header-top { padding: 10px 16px; }
+            .main-nav { padding: 6px 16px 10px; }
             .contact-form { padding: 24px 20px; }
             .mobile-menu { width: 280px; right: -290px; }
         }
@@ -513,9 +519,10 @@
 </head>
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- ===== HEADER (logo arriba, menú abajo) ===== -->
 <header class="header">
-    <div class="container header-inner">
+    <!-- Fila superior: logo + acciones -->
+    <div class="header-top">
         <div class="logo-area">
             <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF">
             <span class="tagline">for every child</span>
@@ -528,12 +535,24 @@
             </button>
         </div>
     </div>
+
+    <!-- Fila inferior: menú de navegación (desktop) -->
+    <nav class="main-nav" id="mainNav">
+        <ul>
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('stories')">Stories</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('work')">What we do</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('where')">Where we work</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('about')">Who we are</a></li>
+            <li><a href="#" onclick="showContact(event)">Contact</a></li>
+        </ul>
+    </nav>
 </header>
 
-<!-- ===== OVERLAY (fondo oscuro) ===== -->
+<!-- ===== OVERLAY (fondo oscuro para móvil) ===== -->
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 
-<!-- ===== MOBILE MENU (desplegable derecha) ===== -->
+<!-- ===== MOBILE MENU (desliza desde derecha) ===== -->
 <div class="mobile-menu" id="mobileMenu">
     <button class="close-btn" onclick="closeMobileMenu()">✕</button>
     <a href="#" onclick="showHome(); closeMobileMenu();">Home</a>
@@ -543,20 +562,6 @@
     <a href="#" onclick="showHome(); closeMobileMenu(); scrollToSection('about')">Who we are</a>
     <a href="#" onclick="showContact(event); closeMobileMenu();">Contact</a>
 </div>
-
-<!-- ===== NAV PRINCIPAL ===== -->
-<nav class="main-nav" id="mainNav">
-    <div class="container">
-        <ul>
-            <li><a href="#" onclick="showHome()">Home</a></li>
-            <li><a href="#" onclick="showHome(); scrollToSection('stories')">Stories</a></li>
-            <li><a href="#" onclick="showHome(); scrollToSection('work')">What we do</a></li>
-            <li><a href="#" onclick="showHome(); scrollToSection('where')">Where we work</a></li>
-            <li><a href="#" onclick="showHome(); scrollToSection('about')">Who we are</a></li>
-            <li><a href="#" onclick="showContact(event)">Contact</a></li>
-        </ul>
-    </div>
-</nav>
 
 <!-- ============================================================ -->
 <!-- ===== HERO ===== -->
@@ -783,4 +788,274 @@
 <div class="article-page" id="article-sudan">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=t
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Sudan children">
+        <div class="meta">Emergency Response | August 2026</div>
+        <h1>Sudan's children face deepening hardship</h1>
+        <div class="content">
+            <p>As conflict continues to ravage Sudan, children are bearing the heaviest burden. More than 4 million children have been displaced, and over 14 million children are in urgent need of humanitarian assistance.</p>
+            <p>UNICEF is on the ground providing life-saving aid, including clean water, nutrition, education and protection services. Since the start of the conflict, UNICEF has delivered over 10,000 metric tonnes of supplies to Sudan, reaching millions of children and families.</p>
+            <p>"The children of Sudan have endured unimaginable suffering," said UNICEF Executive Director Catherine Russell. "We must not fail them. UNICEF is committed to reaching every child in need, but we cannot do it without the support of the international community."</p>
+            <p>UNICEF is calling for an immediate ceasefire and unrestricted humanitarian access to reach all children in need. The organization is also working to provide psychosocial support to children who have experienced violence and trauma.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: REMARKS ===== -->
+<div class="article-page" id="article-remarks">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="UN Security Council">
+        <div class="meta">Remarks | August 2026</div>
+        <h1>UNICEF Deputy Executive Director's remarks at the UN Security Council</h1>
+        <div class="content">
+            <p>Madam President, distinguished members of the Security Council,</p>
+            <p>I am here today to speak on behalf of the children of the West Bank, whose lives have been torn apart by escalating violence. The situation is dire, and it is deteriorating by the day.</p>
+            <p>Children are being killed, injured and displaced. Schools and hospitals are not safe havens. The psychological toll on an entire generation is immeasurable.</p>
+            <p>UNICEF calls on all parties to protect children, to respect international humanitarian law, and to allow unimpeded humanitarian access. We also call on Member States to do everything in their power to de-escalate the violence and to invest in peace.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: EDUCATION ===== -->
+<div class="article-page" id="article-education">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr" alt="Education in emergencies">
+        <div class="meta">Education | July 2026</div>
+        <h1>Education in emergencies: keeping children learning</h1>
+        <div class="content">
+            <p>For children living through conflict, displacement and natural disasters, education is not just a right — it is a lifeline. It provides protection, stability and hope for the future.</p>
+            <p>UNICEF works tirelessly to ensure children continue their education even in the most fragile contexts. This includes setting up temporary learning spaces, providing school supplies, and training teachers to support children's psychosocial needs.</p>
+            <p>"Education is the single most powerful investment we can make for children," said a UNICEF Education Specialist. "In emergencies, it can literally save lives."</p>
+            <p>Despite the challenges, UNICEF and partners have reached millions of children with education support in crisis-affected countries, from Ukraine to the Democratic Republic of the Congo.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: VACCINES ===== -->
+<div class="article-page" id="article-vaccines">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-" alt="Vaccines">
+        <div class="meta">Health | July 2026</div>
+        <h1>Vaccines: protecting every child from preventable diseases</h1>
+        <div class="content">
+            <p>Every year, vaccines save 4 to 5 million lives. Yet, 1 in 5 children worldwide still lack access to life-saving immunizations.</p>
+            <p>UNICEF is the world's largest vaccine buyer, procuring more than 2 billion doses annually. We work with governments, manufacturers and partners to strengthen supply chains, build trust in vaccines, and reach the most marginalized communities.</p>
+            <p>"A child who is vaccinated is a child who can survive, thrive and contribute to their community," said a UNICEF Health Specialist. "We must leave no child behind."</p>
+            <p>Since 2000, UNICEF has helped prevent more than 50 million deaths through immunization programmes, making vaccines one of the most successful public health interventions in history.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: CLIMATE ===== -->
+<div class="article-page" id="article-climate">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate change">
+        <div class="meta">Climate | June 2026</div>
+        <h1>Climate change is a child rights crisis</h1>
+        <div class="content">
+            <p>Climate change is not a distant threat — it is already harming children's health, safety and futures. Over 1 billion children are at extremely high risk of the impacts of climate change.</p>
+            <p>From floods to droughts, extreme weather events are destroying homes, schools and hospitals. Children in the world's most vulnerable communities are paying the highest price for a crisis they did not create.</p>
+            <p>UNICEF works with communities to build climate resilience, promote sustainable practices, and ensure children's voices are heard in climate decision-making. We are calling on governments to prioritize children in climate policies and to invest in adaptation and green solutions.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: GAZA ===== -->
+<div class="article-page" id="article-gaza">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Gaza children">
+        <div class="meta">Emergency Appeal | August 2026</div>
+        <h1>Gaza: children need urgent humanitarian support</h1>
+        <div class="content">
+            <p>Children in Gaza are facing catastrophic conditions. After months of intense conflict, the entire population is in need of humanitarian assistance, and children are bearing the greatest burden.</p>
+            <p>UNICEF is calling for an immediate ceasefire and unimpeded humanitarian access to reach children with life-saving supplies. Our teams are on the ground providing clean water, nutrition, medical care and psychosocial support.</p>
+            <p>"The children of Gaza have been through unimaginable trauma," said a UNICEF Field Coordinator. "We must do everything we can to protect them and to restore their hope for the future."</p>
+            <p>UNICEF reiterates its call on all parties to protect children and civilian infrastructure, and to respect their obligations under international humanitarian law.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: UKRAINE ===== -->
+<div class="article-page" id="article-ukraine">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a" alt="Ukraine children">
+        <div class="meta">Conflict | July 2026</div>
+        <h1>Ukraine: protecting children's future amid war</h1>
+        <div class="content">
+            <p>The war in Ukraine has had a devastating impact on children. More than 3 million children have been displaced, schools have been destroyed, and children have been traumatized by violence and loss.</p>
+            <p>UNICEF provides mental health support, education and basic supplies to children and families affected by the war. Our mobile teams reach children in frontline communities with psychosocial care and emergency assistance.</p>
+            <p>"Every child affected by this war has the right to heal, to learn and to dream," said a UNICEF Representative in Ukraine. "We are committed to helping them recover and rebuild their futures."</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== ARTÍCULO: CLIMATE RESILIENCE ===== -->
+<div class="article-page" id="article-climate-resilience">
+    <div class="container">
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate resilience">
+        <div class="meta">Climate | June 2026</div>
+        <h1>Building resilience for tomorrow</h1>
+        <div class="content">
+            <p>As climate-related disasters become more frequent and severe, communities need to be equipped to withstand and recover from shocks. UNICEF works with partners to build climate resilience in the world's most vulnerable regions.</p>
+            <p>Our programmes focus on strengthening water systems, supporting sustainable agriculture, and training communities in disaster preparedness. We also work to ensure children's education and health services can continue during and after climate emergencies.</p>
+            <p>"Building resilience means investing in children's futures," said a UNICEF Climate Specialist. "It means protecting them today so they can thrive tomorrow."</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== CONTACT SECTION ===== -->
+<section id="contact-section">
+    <div class="container">
+        <div class="contact-form">
+            <h2>Contact us</h2>
+            <p>We would love to hear from you. Please fill out the form below and we will get back to you as soon as possible.</p>
+            <form id="contactForm" onsubmit="submitForm(event)">
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email address</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Send message</button>
+            </form>
+            <div id="confirmation" class="confirmation">✅ Your message has been sent successfully! We will respond shortly.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div>
+                <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF" style="height:32px; filter: brightness(0) invert(1);">
+                <p style="color:#c8d9e1; margin-top:12px;">A nonprofit website inspired by modern global humanitarian UX.</p>
+            </div>
+            <div>
+                <b>Explore</b>
+                <a href="#" onclick="showHome(); scrollToSection('work')">What we do</a>
+                <a href="#" onclick="showHome(); scrollToSection('stories')">Stories</a>
+                <a href="#" onclick="showHome(); scrollToSection('where')">Where we work</a>
+                <a href="#" onclick="showHome(); scrollToSection('about')">Who we are</a>
+            </div>
+            <div>
+                <b>Connect</b>
+                <a href="#" onclick="showContact(event)">Contact</a>
+                <a href="#">Newsletter</a>
+                <a href="#">Partners</a>
+            </div>
+            <div>
+                <b>Legal</b>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Accessibility</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2026 UNICEF · For every child</div>
+    </div>
+</footer>
+
+<!-- ============================================================ -->
+<!-- ===== JAVASCRIPT ===== -->
+<!-- ============================================================ -->
+<script>
+    // ===== MOBILE MENU =====
+    function toggleMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const hamburger = document.getElementById('hamburger');
+        menu.classList.toggle('open');
+        overlay.classList.toggle('open');
+        hamburger.classList.toggle('active');
+    }
+
+    function closeMobileMenu() {
+        const menu = document.getElementById('mobileMenu');
+        const overlay = document.getElementById('mobileOverlay');
+        const hamburger = document.getElementById('hamburger');
+        menu.classList.remove('open');
+        overlay.classList.remove('open');
+        hamburger.classList.remove('active');
+    }
+
+    // ===== MOSTRAR / OCULTAR ARTÍCULOS =====
+    function showArticle(id) {
+        // Ocultar home
+        document.getElementById('homeContent').style.display = 'none';
+        document.getElementById('home').style.display = 'none';
+        // Ocultar todos los artículos
+        document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
+        // Mostrar el artículo solicitado
+        const article = document.getElementById('article-' + id);
+        if (article) {
+            article.classList.add('active');
+        }
+        // Scroll al top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Cerrar menú móvil
+        closeMobileMenu();
+    }
+
+    function showHome() {
+        // Mostrar home
+        document.getElementById('homeContent').style.display = 'block';
+        document.getElementById('home').style.display = 'block';
+        // Ocultar todos los artículos
+        document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
+        // Scroll al top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        closeMobileMenu();
+    }
+
+    function scrollToSection(id) {
+        setTimeout(() => {
+            const el = document.getElementById(id);
+            if (el) {
+                const offset = 140;
+                const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+        }, 100);
+    }
+
+    // ===== CONTACTO =====
+    function showContact(e) {
+        if (e) e.preventDefault();
+        const section = document.getElementById('contact-section');
+        // Mostrar home primero si estamos en un artículo
+        showHome();
+        setTimeout(() => {
+            section.style.display = 'block';
+            const offset = 140;
+            const top = section.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        }, 300);
+        closeMobileMenu();
+    }
+
+    // ===== FORMULARIO =====
+    function submitForm(e) {
+        e.preventDefault();
+        const form = document.getElementById('contactForm');
+        const confirm = document.getElementById('confirmation');
+        confirm.classList.add('show');
+        form.reset();
+        setTimeout(() => confirm.classList.remove('show'), 5000);
+    }
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('contact-section').style.display = 'none';
+        document.getElementById('homeContent').style.display = 'block';
+        document.getElementById('home').style.display = 'block';
+    });
+</script>
+
+</body>
+    </html>
