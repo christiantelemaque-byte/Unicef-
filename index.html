@@ -26,7 +26,7 @@
             border-bottom: 2px solid #ffcf3f;
         }
 
-        /* Fila superior: logo + acciones (siempre visible) */
+        /* FILA SUPERIOR: Logo + acciones (siempre visible) */
         .header-top {
             display: flex;
             align-items: center;
@@ -99,7 +99,7 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-        /* ===== NAV PRINCIPAL (desktop - visible) ===== */
+        /* ===== FILA INFERIOR: Menú de navegación (visible en desktop) ===== */
         .main-nav {
             background: #003b5c;
             padding: 6px 28px 10px;
@@ -490,10 +490,9 @@
         }
 
         /* ===== RESPONSIVE ===== */
-        /* En móvil, el menú de navegación principal se oculta y usamos el menú desplegable */
         @media (max-width: 900px) {
-            .main-nav { display: none; }
-            .hamburger { display: flex; }
+            .main-nav { display: none; }       /* Ocultar menú desktop */
+            .hamburger { display: flex; }      /* Mostrar hamburguesa */
             .featured-block { grid-template-columns: 1fr; }
             .work-grid { grid-template-columns: 1fr 1fr; }
             .world-map { grid-template-columns: 1fr; }
@@ -525,7 +524,7 @@
 <!-- ===== HEADER ===== -->
 <!-- ============================================================ -->
 <header class="header">
-    <!-- FILA SUPERIOR: Logo + Donate + Hamburguesa (siempre visible) -->
+    <!-- FILA 1: Logo + Donate + Hamburguesa (siempre visible) -->
     <div class="header-top">
         <div class="logo-area">
             <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF">
@@ -540,7 +539,7 @@
         </div>
     </div>
 
-    <!-- FILA INFERIOR: Menú de navegación (visible solo en desktop) -->
+    <!-- FILA 2: Menú de navegación (visible solo en desktop) -->
     <nav class="main-nav" id="mainNav">
         <ul>
             <li><a href="#" onclick="showHome()">Home</a></li>
@@ -607,7 +606,7 @@
             <!-- Cards -->
             <div class="card-grid">
                 <div class="card" onclick="showArticle('education')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI502683.jpg?itok=jpV4_IPr');"></div>
                     <div class="card-body">
                         <div class="card-tag">Education</div>
                         <h3>Education in emergencies: keeping children learning</h3>
@@ -616,7 +615,7 @@
                     </div>
                 </div>
                 <div class="card" onclick="showArticle('vaccines')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
                     <div class="card-body">
                         <div class="card-tag">Health</div>
                         <h3>Vaccines: protecting every child from preventable diseases</h3>
@@ -625,7 +624,7 @@
                     </div>
                 </div>
                 <div class="card" onclick="showArticle('climate')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                     <div class="card-body">
                         <div class="card-tag">Climate</div>
                         <h3>Climate change is a child rights crisis</h3>
@@ -644,7 +643,7 @@
             <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
             <div class="card-grid">
                 <div class="card" onclick="showArticle('gaza')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI822513.jpg?itok=tNkMuBtC');"></div>
                     <div class="card-body">
                         <div class="card-tag">Emergency appeal</div>
                         <h3>Gaza: children need urgent humanitarian support</h3>
@@ -653,7 +652,7 @@
                     </div>
                 </div>
                 <div class="card" onclick="showArticle('ukraine')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
                     <div class="card-body">
                         <div class="card-tag">Conflict</div>
                         <h3>Ukraine: protecting children's future amid war</h3>
@@ -662,7 +661,7 @@
                     </div>
                 </div>
                 <div class="card" onclick="showArticle('climate-resilience')">
-                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                     <div class="card-body">
                         <div class="card-tag">Climate</div>
                         <h3>Building resilience for tomorrow</h3>
@@ -795,7 +794,7 @@
 <div class="article-page" id="article-sudan">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Sudan children">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Sudan children" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Sudan'">
         <div class="meta">Emergency Response | August 2026</div>
         <h1>Sudan's children face deepening hardship</h1>
         <div class="content">
@@ -811,7 +810,7 @@
 <div class="article-page" id="article-remarks">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="UN Security Council">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="UN Security Council" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Remarks'">
         <div class="meta">Remarks | August 2026</div>
         <h1>UNICEF Deputy Executive Director's remarks at the UN Security Council</h1>
         <div class="content">
@@ -827,7 +826,7 @@
 <div class="article-page" id="article-education">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr" alt="Education in emergencies">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI502683.jpg?itok=jpV4_IPr" alt="Education in emergencies" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Education'">
         <div class="meta">Education | July 2026</div>
         <h1>Education in emergencies: keeping children learning</h1>
         <div class="content">
@@ -843,7 +842,7 @@
 <div class="article-page" id="article-vaccines">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-" alt="Vaccines">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-" alt="Vaccines" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Vaccines'">
         <div class="meta">Health | July 2026</div>
         <h1>Vaccines: protecting every child from preventable diseases</h1>
         <div class="content">
@@ -859,7 +858,7 @@
 <div class="article-page" id="article-climate">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate change">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate change" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Climate'">
         <div class="meta">Climate | June 2026</div>
         <h1>Climate change is a child rights crisis</h1>
         <div class="content">
@@ -874,7 +873,7 @@
 <div class="article-page" id="article-gaza">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Gaza children">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI822513.jpg?itok=tNkMuBtC" alt="Gaza children" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Gaza'">
         <div class="meta">Emergency Appeal | August 2026</div>
         <h1>Gaza: children need urgent humanitarian support</h1>
         <div class="content">
@@ -890,7 +889,7 @@
 <div class="article-page" id="article-ukraine">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a" alt="Ukraine children">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a" alt="Ukraine children" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Ukraine'">
         <div class="meta">Conflict | July 2026</div>
         <h1>Ukraine: protecting children's future amid war</h1>
         <div class="content">
@@ -905,7 +904,7 @@
 <div class="article-page" id="article-climate-resilience">
     <div class="container">
         <span class="back-link" onclick="showHome()">← Back to home</span>
-        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate resilience">
+        <img class="article-img" src="https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9" alt="Climate resilience" onerror="this.src='https://placehold.co/800x400/003b5c/ffffff?text=UNICEF+Resilience'">
         <div class="meta">Climate | June 2026</div>
         <h1>Building resilience for tomorrow</h1>
         <div class="content">
@@ -1069,4 +1068,4 @@
 </script>
 
 </body>
-    </html>
+                                                                                                   </html>
