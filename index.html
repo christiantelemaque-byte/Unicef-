@@ -28,8 +28,6 @@
             border-bottom: 2px solid #ffcf3f;
             width: 100%;
         }
-
-        /* FILA SUPERIOR: Logo + acciones */
         .header-top {
             display: flex;
             align-items: center;
@@ -149,7 +147,7 @@
         }
         .mobile-overlay.open { display: block; }
 
-        /* ===== MOBILE MENU (desliza desde derecha) ===== */
+        /* ===== MOBILE MENU ===== */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -369,6 +367,7 @@
             object-fit: cover;
             border-radius: 8px;
             margin: 12px 0 16px;
+            background: #dce5ea;
         }
         .article-page h1 {
             font-size: 32px;
@@ -559,7 +558,6 @@
 <!-- ===== HEADER ===== -->
 <!-- ============================================================ -->
 <header class="header">
-    <!-- FILA 1: Logo + Donate + Hamburguesa (siempre visible) -->
     <div class="header-top">
         <div class="logo-area">
             <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF">
@@ -573,8 +571,6 @@
             </button>
         </div>
     </div>
-
-    <!-- FILA 2: Menú de navegación (visible solo en desktop) -->
     <nav class="main-nav" id="mainNav">
         <ul>
             <li><a href="#" onclick="showHome()">Home</a></li>
@@ -587,9 +583,7 @@
     </nav>
 </header>
 
-<!-- ============================================================ -->
-<!-- ===== MOBILE MENU (desliza desde la derecha) ===== -->
-<!-- ============================================================ -->
+<!-- ===== MOBILE OVERLAY & MENU ===== -->
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
 <div class="mobile-menu" id="mobileMenu">
     <button class="close-btn" onclick="closeMobileMenu()">✕</button>
@@ -627,7 +621,7 @@
             <h2 class="section-title">Stories that matter</h2>
             <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
 
-            <!-- Featured -->
+            <!-- Featured: Remarks -->
             <div class="featured-block" onclick="showArticle('remarks')">
                 <div class="featured-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                 <div class="featured-body">
@@ -640,6 +634,7 @@
 
             <!-- Cards -->
             <div class="card-grid">
+                <!-- Education -->
                 <div class="card" onclick="showArticle('education')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI502683.jpg?itok=jpV4_IPr');"></div>
                     <div class="card-body">
@@ -649,6 +644,7 @@
                         <span class="card-link">Read more →</span>
                     </div>
                 </div>
+                <!-- Vaccines -->
                 <div class="card" onclick="showArticle('vaccines')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
                     <div class="card-body">
@@ -658,6 +654,7 @@
                         <span class="card-link">Read more →</span>
                     </div>
                 </div>
+                <!-- Climate -->
                 <div class="card" onclick="showArticle('climate')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                     <div class="card-body">
@@ -677,6 +674,7 @@
             <h2 class="section-title">Children need support now</h2>
             <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
             <div class="card-grid">
+                <!-- Gaza -->
                 <div class="card" onclick="showArticle('gaza')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI822513.jpg?itok=tNkMuBtC');"></div>
                     <div class="card-body">
@@ -686,6 +684,7 @@
                         <span class="card-link">Learn more →</span>
                     </div>
                 </div>
+                <!-- Ukraine -->
                 <div class="card" onclick="showArticle('ukraine')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
                     <div class="card-body">
@@ -695,6 +694,7 @@
                         <span class="card-link">Explore →</span>
                     </div>
                 </div>
+                <!-- Climate Resilience -->
                 <div class="card" onclick="showArticle('climate-resilience')">
                     <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                     <div class="card-body">
@@ -822,7 +822,7 @@
 </div><!-- /homeContent -->
 
 <!-- ============================================================ -->
-<!-- ===== ARTÍCULOS COMPLETOS ===== -->
+<!-- ===== ARTÍCULOS COMPLETOS (con imágenes) ===== -->
 <!-- ============================================================ -->
 
 <!-- ===== ARTÍCULO: SUDAN ===== -->
@@ -1094,4 +1094,4 @@
 </script>
 
 </body>
-  </html>
+    </html>
