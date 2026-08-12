@@ -17,19 +17,21 @@
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
 
-        /* ===== HEADER (estilo captura) ===== */
+        /* ===== HEADER (fondo oscuro para contraste) ===== */
         .header {
-            background: #fff;
-            border-bottom: 1px solid #dce5ea;
-            padding: 16px 0;
+            background: #003b5c;
+            padding: 14px 0;
             position: sticky;
             top: 0;
             z-index: 50;
+            border-bottom: 2px solid #ffcf3f;
         }
         .header-inner {
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .logo-area {
             display: flex;
@@ -39,12 +41,13 @@
         .logo-area img {
             height: 38px;
             display: block;
+            filter: brightness(0) invert(1); /* Logo blanco sobre fondo oscuro */
         }
         .logo-area .tagline {
             font-size: 16px;
             font-weight: 400;
-            color: #17384a;
-            border-left: 1px solid #dce5ea;
+            color: #ffffff;
+            border-left: 1px solid rgba(255,255,255,0.3);
             padding-left: 12px;
             letter-spacing: -0.3px;
         }
@@ -53,6 +56,12 @@
             align-items: center;
             gap: 20px;
         }
+        .lang-selector {
+            font-size: 14px;
+            color: #ffffff;
+            cursor: default;
+        }
+        .lang-selector span { margin: 0 4px; }
         .donate-btn {
             background: #ffcf3f;
             padding: 10px 24px;
@@ -62,14 +71,31 @@
             font-size: 16px;
             cursor: pointer;
             transition: background 0.2s;
+            color: #003b5c;
         }
         .donate-btn:hover { background: #f0b800; }
-        .lang-selector {
-            font-size: 14px;
-            color: #17384a;
-            cursor: default;
+
+        /* ===== NAVEGACIÓN (enlaces blancos) ===== */
+        .main-nav {
+            background: #003b5c;
+            padding: 6px 0 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .lang-selector span { margin: 0 4px; }
+        .main-nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        .main-nav a {
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 15px;
+            padding: 4px 0;
+            border-bottom: 3px solid transparent;
+            transition: border-color 0.2s;
+        }
+        .main-nav a:hover { border-bottom-color: #ffcf3f; }
 
         /* ===== HERO (imagen real) ===== */
         .hero {
@@ -221,7 +247,7 @@
             margin-bottom: 18px;
         }
 
-        /* ===== OTRAS SECCIONES (WHO WE ARE, ETC) ===== */
+        /* ===== OTRAS SECCIONES ===== */
         .work-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -345,6 +371,8 @@
             .work-grid { grid-template-columns: 1fr 1fr; }
             .world-map { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
+            .main-nav ul { gap: 16px; }
+            .main-nav a { font-size: 14px; }
         }
         @media (max-width: 600px) {
             .hero-text h1 { font-size: 34px; }
@@ -356,12 +384,13 @@
             .work-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
             .header-actions .lang-selector { display: none; }
+            .main-nav ul { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER (estilo captura) ===== -->
+<!-- ===== HEADER (fondo oscuro) ===== -->
 <header class="header">
     <div class="container header-inner">
         <div class="logo-area">
@@ -374,6 +403,19 @@
         </div>
     </div>
 </header>
+
+<!-- ===== NAVEGACIÓN PRINCIPAL ===== -->
+<nav class="main-nav">
+    <div class="container">
+        <ul>
+            <li><a href="#stories">Stories</a></li>
+            <li><a href="#work">What we do</a></li>
+            <li><a href="#where">Where we work</a></li>
+            <li><a href="#about">Who we are</a></li>
+            <li><a href="#" onclick="showContact(event)">Contact</a></li>
+        </ul>
+    </div>
+</nav>
 
 <!-- ===== HERO ===== -->
 <section class="hero">
@@ -389,12 +431,12 @@
 </section>
 
 <!-- ===== ARTÍCULOS DESTACADOS (con imágenes reales) ===== -->
-<section class="section">
+<section class="section" id="stories">
     <div class="container">
         <h2 class="section-title">Stories that matter</h2>
         <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
 
-        <!-- Bloque destacado (estilo captura 2) -->
+        <!-- Bloque destacado -->
         <div class="featured-block">
             <div class="featured-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
             <div class="featured-body">
@@ -408,7 +450,7 @@
         <!-- Tarjetas de artículos -->
         <div class="card-grid">
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr');"></div>
                 <div class="card-body">
                     <div class="card-tag">Education</div>
                     <h3>Education in emergencies: keeping children learning</h3>
@@ -417,7 +459,7 @@
                 </div>
             </article>
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
                 <div class="card-body">
                     <div class="card-tag">Health</div>
                     <h3>Vaccines: protecting every child from preventable diseases</h3>
@@ -426,7 +468,7 @@
                 </div>
             </article>
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                 <div class="card-body">
                     <div class="card-tag">Climate</div>
                     <h3>Climate change is a child rights crisis</h3>
@@ -438,14 +480,14 @@
     </div>
 </section>
 
-<!-- ===== EMERGENCY APPEALS (con imágenes) ===== -->
+<!-- ===== EMERGENCY APPEALS ===== -->
 <section class="section bg-light">
     <div class="container">
         <h2 class="section-title">Children need support now</h2>
         <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
         <div class="card-grid">
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC');"></div>
                 <div class="card-body">
                     <div class="card-tag">Emergency appeal</div>
                     <h3>Gaza: children need urgent humanitarian support</h3>
@@ -454,7 +496,7 @@
                 </div>
             </article>
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
                 <div class="card-body">
                     <div class="card-tag">Conflict</div>
                     <h3>Ukraine: protecting children's future amid war</h3>
@@ -463,7 +505,7 @@
                 </div>
             </article>
             <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
                 <div class="card-body">
                     <div class="card-tag">Climate</div>
                     <h3>Building resilience for tomorrow</h3>
@@ -611,7 +653,7 @@
     <div class="container">
         <div class="footer-grid">
             <div>
-                <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF" style="height:32px;">
+                <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF" style="height:32px; filter: brightness(0) invert(1);">
                 <p style="color:#c8d9e1; margin-top:12px;">A nonprofit website inspired by modern global humanitarian UX.</p>
             </div>
             <div>
@@ -665,4 +707,4 @@
 </script>
 
 </body>
-</html>
+    </html>
