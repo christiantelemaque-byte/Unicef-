@@ -25,6 +25,8 @@
             z-index: 100;
             border-bottom: 2px solid #ffcf3f;
         }
+
+        /* Fila superior: logo + acciones (siempre visible) */
         .header-top {
             display: flex;
             align-items: center;
@@ -97,7 +99,7 @@
         .hamburger.active span:nth-child(2) { opacity: 0; }
         .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
 
-        /* ===== NAV PRINCIPAL (desktop) ===== */
+        /* ===== NAV PRINCIPAL (desktop - visible) ===== */
         .main-nav {
             background: #003b5c;
             padding: 6px 28px 10px;
@@ -488,6 +490,7 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        /* En móvil, el menú de navegación principal se oculta y usamos el menú desplegable */
         @media (max-width: 900px) {
             .main-nav { display: none; }
             .hamburger { display: flex; }
@@ -511,7 +514,6 @@
             .article-page h1 { font-size: 26px; }
             .container { padding: 0 16px; }
             .header-top { padding: 10px 16px; }
-            .main-nav { padding: 6px 16px 10px; }
             .contact-form { padding: 24px 20px; }
             .mobile-menu { width: 280px; right: -290px; }
         }
@@ -519,9 +521,11 @@
 </head>
 <body>
 
-<!-- ===== HEADER (logo arriba, menú abajo) ===== -->
+<!-- ============================================================ -->
+<!-- ===== HEADER ===== -->
+<!-- ============================================================ -->
 <header class="header">
-    <!-- Fila superior: logo + acciones -->
+    <!-- FILA SUPERIOR: Logo + Donate + Hamburguesa (siempre visible) -->
     <div class="header-top">
         <div class="logo-area">
             <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF">
@@ -536,7 +540,7 @@
         </div>
     </div>
 
-    <!-- Fila inferior: menú de navegación (desktop) -->
+    <!-- FILA INFERIOR: Menú de navegación (visible solo en desktop) -->
     <nav class="main-nav" id="mainNav">
         <ul>
             <li><a href="#" onclick="showHome()">Home</a></li>
@@ -549,10 +553,10 @@
     </nav>
 </header>
 
-<!-- ===== OVERLAY (fondo oscuro para móvil) ===== -->
+<!-- ============================================================ -->
+<!-- ===== MOBILE MENU (desliza desde la derecha) ===== -->
+<!-- ============================================================ -->
 <div class="mobile-overlay" id="mobileOverlay" onclick="closeMobileMenu()"></div>
-
-<!-- ===== MOBILE MENU (desliza desde derecha) ===== -->
 <div class="mobile-menu" id="mobileMenu">
     <button class="close-btn" onclick="closeMobileMenu()">✕</button>
     <a href="#" onclick="showHome(); closeMobileMenu();">Home</a>
@@ -565,6 +569,7 @@
 
 <!-- ============================================================ -->
 <!-- ===== HERO ===== -->
+<!-- ============================================================ -->
 <section class="hero" id="home">
     <div class="hero-image"></div>
     <div class="hero-content">
@@ -577,7 +582,9 @@
     </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ===== HOME CONTENT ===== -->
+<!-- ============================================================ -->
 <div id="homeContent">
 
     <!-- ===== STORIES ===== -->
@@ -909,7 +916,9 @@
     </div>
 </div>
 
+<!-- ============================================================ -->
 <!-- ===== CONTACT SECTION ===== -->
+<!-- ============================================================ -->
 <section id="contact-section">
     <div class="container">
         <div class="contact-form">
@@ -929,7 +938,9 @@
     </div>
 </section>
 
+<!-- ============================================================ -->
 <!-- ===== FOOTER ===== -->
+<!-- ============================================================ -->
 <footer>
     <div class="container">
         <div class="footer-grid">
