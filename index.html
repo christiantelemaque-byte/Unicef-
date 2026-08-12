@@ -12,7 +12,7 @@
             font-family: Arial, Helvetica, sans-serif;
             color: #17384a;
             background: #fff;
-            line-height: 1.5;
+            line-height: 1.6;
         }
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
@@ -23,7 +23,7 @@
             padding: 14px 0;
             position: sticky;
             top: 0;
-            z-index: 50;
+            z-index: 100;
             border-bottom: 2px solid #ffcf3f;
         }
         .header-inner {
@@ -41,7 +41,7 @@
         .logo-area img {
             height: 38px;
             display: block;
-            filter: brightness(0) invert(1); /* Logo blanco sobre fondo oscuro */
+            filter: brightness(0) invert(1);
         }
         .logo-area .tagline {
             font-size: 16px;
@@ -61,7 +61,6 @@
             color: #ffffff;
             cursor: default;
         }
-        .lang-selector span { margin: 0 4px; }
         .donate-btn {
             background: #ffcf3f;
             padding: 10px 24px;
@@ -75,7 +74,29 @@
         }
         .donate-btn:hover { background: #f0b800; }
 
-        /* ===== NAVEGACIÓN (enlaces blancos) ===== */
+        /* ===== HAMBURGUESA (mobile) ===== */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: 0;
+            cursor: pointer;
+            padding: 5px;
+        }
+        .hamburger span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #fff;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .hamburger.active span:nth-child(2) { opacity: 0; }
+        .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* ===== NAVEGACIÓN ===== */
         .main-nav {
             background: #003b5c;
             padding: 6px 0 10px;
@@ -97,7 +118,26 @@
         }
         .main-nav a:hover { border-bottom-color: #ffcf3f; }
 
-        /* ===== HERO (imagen real) ===== */
+        /* ===== MOBILE MENU (desplegable) ===== */
+        .mobile-menu {
+            display: none;
+            background: #003b5c;
+            padding: 20px 28px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mobile-menu.open { display: block; }
+        .mobile-menu a {
+            display: block;
+            color: #fff;
+            padding: 12px 0;
+            font-weight: 600;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .mobile-menu a:last-child { border-bottom: 0; }
+        .mobile-menu a:hover { color: #ffcf3f; }
+
+        /* ===== HERO ===== */
         .hero {
             position: relative;
             min-height: 480px;
@@ -172,7 +212,7 @@
         }
         .bg-light { background: #f3f7f9; }
 
-        /* ===== TARJETAS DE ARTÍCULOS (con imagen) ===== */
+        /* ===== TARJETAS DE ARTÍCULOS ===== */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -185,6 +225,7 @@
             border-radius: 8px;
             overflow: hidden;
             transition: box-shadow 0.2s;
+            cursor: pointer;
         }
         .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
         .card-img {
@@ -217,7 +258,7 @@
         }
         .card-link:hover { text-decoration: underline; }
 
-        /* ===== BLOQUE DESTACADO (estilo captura) ===== */
+        /* ===== BLOQUE DESTACADO ===== */
         .featured-block {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -246,6 +287,52 @@
             color: #4a6a7a;
             margin-bottom: 18px;
         }
+
+        /* ===== PÁGINAS DE ARTÍCULOS COMPLETOS ===== */
+        .article-page {
+            display: none;
+            padding: 40px 0;
+            background: #fff;
+        }
+        .article-page.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .article-page .back-link {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #0066a1;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .article-page .back-link:hover { text-decoration: underline; }
+        .article-page img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .article-page h1 {
+            font-size: 40px;
+            letter-spacing: -1px;
+            margin: 10px 0 16px;
+        }
+        .article-page .meta {
+            color: #4a6a7a;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        .article-page .content {
+            font-size: 18px;
+            line-height: 1.8;
+            max-width: 800px;
+        }
+        .article-page .content p { margin-bottom: 18px; }
 
         /* ===== OTRAS SECCIONES ===== */
         .work-grid {
@@ -288,7 +375,7 @@
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        /* ===== CONTACTO (oculto) ===== */
+        /* ===== CONTACTO ===== */
         #contact-section {
             display: none;
             padding: 60px 0;
@@ -365,14 +452,14 @@
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
-            .header-inner { flex-wrap: wrap; gap: 12px; }
-            .logo-area .tagline { display: none; }
+            .main-nav { display: none; }
+            .hamburger { display: flex; }
             .featured-block { grid-template-columns: 1fr; }
             .work-grid { grid-template-columns: 1fr 1fr; }
             .world-map { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
-            .main-nav ul { gap: 16px; }
-            .main-nav a { font-size: 14px; }
+            .header-actions .lang-selector { display: none; }
+            .logo-area .tagline { display: none; }
         }
         @media (max-width: 600px) {
             .hero-text h1 { font-size: 34px; }
@@ -383,14 +470,19 @@
             .card-grid { grid-template-columns: 1fr; }
             .work-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; }
-            .header-actions .lang-selector { display: none; }
-            .main-nav ul { justify-content: center; }
+            .article-page h1 { font-size: 28px; }
         }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #0066a1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #004d7a; }
     </style>
 </head>
 <body>
 
-<!-- ===== HEADER (fondo oscuro) ===== -->
+<!-- ===== HEADER ===== -->
 <header class="header">
     <div class="container header-inner">
         <div class="logo-area">
@@ -400,311 +492,271 @@
         <div class="header-actions">
             <span class="lang-selector">English ▾</span>
             <button class="donate-btn" onclick="alert('Donation page')">Donate</button>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </div>
 </header>
 
-<!-- ===== NAVEGACIÓN PRINCIPAL ===== -->
-<nav class="main-nav">
+<!-- ===== MOBILE MENU ===== -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#" onclick="showHome()">Home</a>
+    <a href="#" onclick="showHome(); scrollToSection('stories')">Stories</a>
+    <a href="#" onclick="showHome(); scrollToSection('work')">What we do</a>
+    <a href="#" onclick="showHome(); scrollToSection('where')">Where we work</a>
+    <a href="#" onclick="showHome(); scrollToSection('about')">Who we are</a>
+    <a href="#" onclick="showContact(event)">Contact</a>
+</div>
+
+<!-- ===== NAV PRINCIPAL ===== -->
+<nav class="main-nav" id="mainNav">
     <div class="container">
         <ul>
-            <li><a href="#stories">Stories</a></li>
-            <li><a href="#work">What we do</a></li>
-            <li><a href="#where">Where we work</a></li>
-            <li><a href="#about">Who we are</a></li>
+            <li><a href="#" onclick="showHome()">Home</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('stories')">Stories</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('work')">What we do</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('where')">Where we work</a></li>
+            <li><a href="#" onclick="showHome(); scrollToSection('about')">Who we are</a></li>
             <li><a href="#" onclick="showContact(event)">Contact</a></li>
         </ul>
     </div>
 </nav>
 
 <!-- ===== HERO ===== -->
-<section class="hero">
+<section class="hero" id="home">
     <div class="hero-image"></div>
     <div class="hero-content">
         <div class="hero-text">
             <div class="eyebrow">UNICEF, for every child</div>
             <h1>Sudan's children face deepening hardship</h1>
             <p>UNICEF is on the ground providing life‑saving aid</p>
-            <a href="https://www.unicef.org/press-releases/unicef-delivers-life-saving-supplies-children-sudan" target="_blank" class="btn-white">Learn more →</a>
+            <a href="#" onclick="showArticle('sudan')" class="btn-white">Learn more →</a>
         </div>
     </div>
 </section>
 
-<!-- ===== ARTÍCULOS DESTACADOS (con imágenes reales) ===== -->
-<section class="section" id="stories">
+<!-- ===== HOME CONTENT (oculto cuando se ve un artículo) ===== -->
+<div id="homeContent">
+
+    <!-- ===== STORIES SECTION ===== -->
+    <section class="section" id="stories">
+        <div class="container">
+            <h2 class="section-title">Stories that matter</h2>
+            <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
+
+            <!-- Bloque destacado -->
+            <div class="featured-block" onclick="showArticle('remarks')" style="cursor:pointer;">
+                <div class="featured-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                <div class="featured-body">
+                    <div class="card-tag">Remarks</div>
+                    <h2>UNICEF Deputy Executive Director's remarks at the UN Security Council</h2>
+                    <p>Hannan Sulieman's remarks on escalating violence in the West Bank.</p>
+                    <span class="card-link">Read now →</span>
+                </div>
+            </div>
+
+            <!-- Tarjetas de artículos -->
+            <div class="card-grid">
+                <div class="card" onclick="showArticle('education')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Education</div>
+                        <h3>Education in emergencies: keeping children learning</h3>
+                        <p>UNICEF works to ensure children continue their education even in the most fragile contexts.</p>
+                        <span class="card-link">Read more →</span>
+                    </div>
+                </div>
+                <div class="card" onclick="showArticle('vaccines')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Health</div>
+                        <h3>Vaccines: protecting every child from preventable diseases</h3>
+                        <p>Immunization saves millions of lives each year. UNICEF is the world's largest vaccine provider.</p>
+                        <span class="card-link">Read more →</span>
+                    </div>
+                </div>
+                <div class="card" onclick="showArticle('climate')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Climate</div>
+                        <h3>Climate change is a child rights crisis</h3>
+                        <p>Extreme weather events threaten the lives and futures of millions of children.</p>
+                        <span class="card-link">Read more →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EMERGENCY APPEALS ===== -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Children need support now</h2>
+            <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
+            <div class="card-grid">
+                <div class="card" onclick="showArticle('gaza')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Emergency appeal</div>
+                        <h3>Gaza: children need urgent humanitarian support</h3>
+                        <p>Children in Gaza are facing catastrophic conditions. UNICEF calls for an immediate ceasefire.</p>
+                        <span class="card-link">Learn more →</span>
+                    </div>
+                </div>
+                <div class="card" onclick="showArticle('ukraine')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Conflict</div>
+                        <h3>Ukraine: protecting children's future amid war</h3>
+                        <p>UNICEF provides mental health support, education and basic supplies to children affected by the war.</p>
+                        <span class="card-link">Explore →</span>
+                    </div>
+                </div>
+                <div class="card" onclick="showArticle('climate-resilience')">
+                    <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                    <div class="card-body">
+                        <div class="card-tag">Climate</div>
+                        <h3>Building resilience for tomorrow</h3>
+                        <p>Helping communities prepare for climate risks that affect children.</p>
+                        <span class="card-link">Explore →</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHAT WE DO ===== -->
+    <section class="section" id="work">
+        <div class="container">
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
+                <div>
+                    <h2 class="section-title" style="margin-bottom: 10px;">What we do</h2>
+                    <p class="section-sub">Our programmes focus on practical solutions that help children survive, learn, grow and reach their potential.</p>
+                    <a href="https://www.unicef.org/our-work" target="_blank" class="card-link">Discover all our priorities →</a>
+                </div>
+                <div class="work-grid">
+                    <a href="https://www.unicef.org/child-protection" target="_blank">Child protection ↗</a>
+                    <a href="https://www.unicef.org/education" target="_blank">Education ↗</a>
+                    <a href="https://www.unicef.org/health" target="_blank">Health & nutrition ↗</a>
+                    <a href="https://www.unicef.org/water-sanitation" target="_blank">Clean water ↗</a>
+                    <a href="https://www.unicef.org/climate-change" target="_blank">Climate action ↗</a>
+                    <a href="https://www.unicef.org/early-childhood-development" target="_blank">Early childhood ↗</a>
+                    <a href="https://www.unicef.org/adolescence" target="_blank">Youth participation ↗</a>
+                    <a href="https://www.unicef.org/emergencies" target="_blank">Emergency response ↗</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHERE WE WORK ===== -->
+    <section class="section" id="where">
+        <div class="container">
+            <div class="world-map">
+                <div>
+                    <div style="text-transform:uppercase; font-size:13px; letter-spacing:1.5px; font-weight:700; opacity:0.8;">Where we work</div>
+                    <h2 style="font-size:36px; margin:8px 0 12px;">Local action. Global reach.</h2>
+                    <p style="font-size:18px; opacity:0.9;">We work alongside local organizations and communities across more than 190 countries and territories.</p>
+                    <a href="https://www.unicef.org/where-we-work" target="_blank" style="display:inline-block; background:#fff; color:#0066a1; padding:12px 24px; border-radius:4px; font-weight:700; margin-top:10px;">Explore locations →</a>
+                </div>
+                <div class="map-placeholder">190+ countries</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHO WE ARE ===== -->
+    <section class="section bg-light" id="about">
+        <div class="container">
+            <h2 class="section-title">Who we are</h2>
+            <p class="section-sub">We believe every child deserves dignity, safety, education and the opportunity to shape their own future. Our work is built around partnerships, accountability and local leadership.</p>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-tag">Our mission</div>
+                        <h3>Put children first</h3>
+                        <p>We focus resources where they can make the greatest difference, reaching the most vulnerable children.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-tag">Partnerships</div>
+                        <h3>Work together</h3>
+                        <p>Communities, governments, organizations and young people all have a role in creating lasting change.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-tag">Accountability</div>
+                        <h3>Show our results</h3>
+                        <p>We share progress, learn from experience and improve continuously to deliver better outcomes for children.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SPOTLIGHT ===== -->
+    <section class="section" style="background:#003b5c; color:#fff;">
+        <div class="container">
+            <h2 class="section-title" style="color:#fff;">Spotlight</h2>
+            <p class="section-sub" style="color:#d7e7ee;">Explore campaigns, ideas and initiatives you can support.</p>
+            <div class="card-grid">
+                <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
+                    <div class="card-body">
+                        <div class="card-tag" style="color:#ffcf3f;">Campaign</div>
+                        <h3 style="color:#fff;">Every child belongs</h3>
+                        <p style="color:#d7e7ee;">Building more inclusive communities where every child can participate and thrive.</p>
+                        <a href="https://www.unicef.org/inclusion" target="_blank" class="card-link" style="color:#ffcf3f;">Explore →</a>
+                    </div>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
+                    <div class="card-body">
+                        <div class="card-tag" style="color:#ffcf3f;">Youth voices</div>
+                        <h3 style="color:#fff;">Listen to young people</h3>
+                        <p style="color:#d7e7ee;">Young people bring ideas, energy and solutions to the issues that affect them.</p>
+                        <a href="https://www.unicef.org/youth" target="_blank" class="card-link" style="color:#ffcf3f;">Discover →</a>
+                    </div>
+                </div>
+                <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
+                    <div class="card-body">
+                        <div class="card-tag" style="color:#ffcf3f;">Take action</div>
+                        <h3 style="color:#fff;">Small actions matter</h3>
+                        <p style="color:#d7e7ee;">Find simple ways to volunteer, advocate, share or support.</p>
+                        <a href="https://www.unicef.org/get-involved" target="_blank" class="card-link" style="color:#ffcf3f;">Get involved →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section style="background:#ffcf3f; padding:50px 0;">
+        <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+            <h2 style="font-size:36px; margin:0;">Help create a better future for children.</h2>
+            <button onclick="alert('Donation page')" style="background:#003b5c; color:#fff; border:0; padding:14px 30px; font-weight:900; border-radius:4px; font-size:18px; cursor:pointer;">Donate now</button>
+        </div>
+    </section>
+
+</div><!-- /homeContent -->
+
+<!-- ============================================================ -->
+<!-- ===== PÁGINAS DE ARTÍCULOS COMPLETOS ===== -->
+<!-- ============================================================ -->
+
+<!-- ===== ARTÍCULO: SUDAN ===== -->
+<div class="article-page" id="article-sudan">
     <div class="container">
-        <h2 class="section-title">Stories that matter</h2>
-        <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
-
-        <!-- Bloque destacado -->
-        <div class="featured-block">
-            <div class="featured-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
-            <div class="featured-body">
-                <div class="card-tag">Remarks</div>
-                <h2>UNICEF Deputy Executive Director's remarks at the UN Security Council</h2>
-                <p>Hannan Sulieman's remarks on escalating violence in the West Bank.</p>
-                <a href="https://www.unicef.org/press-releases/remarks-united-nations-security-council-escalating-violence-west-bank" target="_blank" class="card-link">Read now →</a>
-            </div>
-        </div>
-
-        <!-- Tarjetas de artículos -->
-        <div class="card-grid">
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI502683.webp?itok=jpV4_IPr');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Education</div>
-                    <h3>Education in emergencies: keeping children learning</h3>
-                    <p>UNICEF works to ensure children continue their education even in the most fragile contexts.</p>
-                    <a href="https://www.unicef.org/education/emergencies" target="_blank" class="card-link">Read more →</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Health</div>
-                    <h3>Vaccines: protecting every child from preventable diseases</h3>
-                    <p>Immunization saves millions of lives each year. UNICEF is the world's largest vaccine provider.</p>
-                    <a href="https://www.unicef.org/immunization" target="_blank" class="card-link">Read more →</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Climate</div>
-                    <h3>Climate change is a child rights crisis</h3>
-                    <p>Extreme weather events threaten the lives and futures of millions of children.</p>
-                    <a href="https://www.unicef.org/climate-change" target="_blank" class="card-link">Read more →</a>
-                </div>
-            </article>
+        <span class="back-link" onclick="showHome()">← Back to home</span>
+        <img src="https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC" alt="Sudan children">
+        <div class="meta">Emergency Response | August 2026</div>
+        <h1>Sudan's children face deepening hardship</h1>
+        <div class="content">
+            <p>As conflict continues to ravage Sudan, children are bearing the heaviest burden. More than 4 million children have been displaced, and over 14 million children are in urgent need of humanitarian assistance.</p>
+            <p>UNICEF is on the ground providing life-saving aid, including clean water, nutrition, education and protection services. Since the start of the conflict, UNICEF has delivered over 10,000 metric tonnes of supplies to Sudan, reaching millions of children and families.</p>
+            <p>"The children of Sudan have endured unimaginable suffering," said UNICEF Executive Director Catherine Russell. "We must not fail them. UNICEF is committed to reaching every child in need, but we cannot do it without the support of the international community."</p>
+            <p>UNICEF is calling for an immediate ceasefire and unrestricted humanitarian access to reach all children in need. The organization is also working to provide psychosocial support to children who have experienced violence and trauma.</p>
         </div>
     </div>
-</section>
+</div>
 
-<!-- ===== EMERGENCY APPEALS ===== -->
-<section class="section bg-light">
-    <div class="container">
-        <h2 class="section-title">Children need support now</h2>
-        <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
-        <div class="card-grid">
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI822513.webp?itok=tNkMuBtC');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Emergency appeal</div>
-                    <h3>Gaza: children need urgent humanitarian support</h3>
-                    <p>Children in Gaza are facing catastrophic conditions. UNICEF calls for an immediate ceasefire.</p>
-                    <a href="https://www.unicef.org/emergencies/gaza-children-need-immediate-humanitarian-support" target="_blank" class="card-link">Learn more →</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Conflict</div>
-                    <h3>Ukraine: protecting children's future amid war</h3>
-                    <p>UNICEF provides mental health support, education and basic supplies to children affected by the war.</p>
-                    <a href="https://www.unicef.org/emergencies/ukraine-emergency" target="_blank" class="card-link">Explore →</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
-                <div class="card-body">
-                    <div class="card-tag">Climate</div>
-                    <h3>Building resilience for tomorrow</h3>
-                    <p>Helping communities prepare for climate risks that affect children.</p>
-                    <a href="https://www.unicef.org/climate-change" target="_blank" class="card-link">Explore →</a>
-                </div>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- ===== WHAT WE DO ===== -->
-<section class="section" id="work">
-    <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start;">
-            <div>
-                <h2 class="section-title" style="margin-bottom: 10px;">What we do</h2>
-                <p class="section-sub">Our programmes focus on practical solutions that help children survive, learn, grow and reach their potential.</p>
-                <a href="https://www.unicef.org/our-work" target="_blank" class="card-link">Discover all our priorities →</a>
-            </div>
-            <div class="work-grid">
-                <a href="https://www.unicef.org/child-protection" target="_blank">Child protection ↗</a>
-                <a href="https://www.unicef.org/education" target="_blank">Education ↗</a>
-                <a href="https://www.unicef.org/health" target="_blank">Health & nutrition ↗</a>
-                <a href="https://www.unicef.org/water-sanitation" target="_blank">Clean water ↗</a>
-                <a href="https://www.unicef.org/climate-change" target="_blank">Climate action ↗</a>
-                <a href="https://www.unicef.org/early-childhood-development" target="_blank">Early childhood ↗</a>
-                <a href="https://www.unicef.org/adolescence" target="_blank">Youth participation ↗</a>
-                <a href="https://www.unicef.org/emergencies" target="_blank">Emergency response ↗</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== WHERE WE WORK ===== -->
-<section class="section" id="where">
-    <div class="container">
-        <div class="world-map">
-            <div>
-                <div style="text-transform:uppercase; font-size:13px; letter-spacing:1.5px; font-weight:700; opacity:0.8;">Where we work</div>
-                <h2 style="font-size:36px; margin:8px 0 12px;">Local action. Global reach.</h2>
-                <p style="font-size:18px; opacity:0.9;">We work alongside local organizations and communities across more than 190 countries and territories.</p>
-                <a href="https://www.unicef.org/where-we-work" target="_blank" style="display:inline-block; background:#fff; color:#0066a1; padding:12px 24px; border-radius:4px; font-weight:700; margin-top:10px;">Explore locations →</a>
-            </div>
-            <div class="map-placeholder">190+ countries</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== WHO WE ARE ===== -->
-<section class="section bg-light" id="about">
-    <div class="container">
-        <h2 class="section-title">Who we are</h2>
-        <p class="section-sub">We believe every child deserves dignity, safety, education and the opportunity to shape their own future. Our work is built around partnerships, accountability and local leadership.</p>
-        <div class="card-grid">
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-tag">Our mission</div>
-                    <h3>Put children first</h3>
-                    <p>We focus resources where they can make the greatest difference, reaching the most vulnerable children.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-tag">Partnerships</div>
-                    <h3>Work together</h3>
-                    <p>Communities, governments, organizations and young people all have a role in creating lasting change.</p>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-tag">Accountability</div>
-                    <h3>Show our results</h3>
-                    <p>We share progress, learn from experience and improve continuously to deliver better outcomes for children.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== SPOTLIGHT ===== -->
-<section class="section" style="background:#003b5c; color:#fff;">
-    <div class="container">
-        <h2 class="section-title" style="color:#fff;">Spotlight</h2>
-        <p class="section-sub" style="color:#d7e7ee;">Explore campaigns, ideas and initiatives you can support.</p>
-        <div class="card-grid">
-            <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
-                <div class="card-body">
-                    <div class="card-tag" style="color:#ffcf3f;">Campaign</div>
-                    <h3 style="color:#fff;">Every child belongs</h3>
-                    <p style="color:#d7e7ee;">Building more inclusive communities where every child can participate and thrive.</p>
-                    <a href="https://www.unicef.org/inclusion" target="_blank" class="card-link" style="color:#ffcf3f;">Explore →</a>
-                </div>
-            </div>
-            <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
-                <div class="card-body">
-                    <div class="card-tag" style="color:#ffcf3f;">Youth voices</div>
-                    <h3 style="color:#fff;">Listen to young people</h3>
-                    <p style="color:#d7e7ee;">Young people bring ideas, energy and solutions to the issues that affect them.</p>
-                    <a href="https://www.unicef.org/youth" target="_blank" class="card-link" style="color:#ffcf3f;">Discover →</a>
-                </div>
-            </div>
-            <div class="card" style="background:rgba(255,255,255,0.06); border-color:rgba(255,255,255,0.2); color:#fff;">
-                <div class="card-body">
-                    <div class="card-tag" style="color:#ffcf3f;">Take action</div>
-                    <h3 style="color:#fff;">Small actions matter</h3>
-                    <p style="color:#d7e7ee;">Find simple ways to volunteer, advocate, share or support.</p>
-                    <a href="https://www.unicef.org/get-involved" target="_blank" class="card-link" style="color:#ffcf3f;">Get involved →</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CTA ===== -->
-<section style="background:#ffcf3f; padding:50px 0;">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
-        <h2 style="font-size:36px; margin:0;">Help create a better future for children.</h2>
-        <button onclick="alert('Donation page')" style="background:#003b5c; color:#fff; border:0; padding:14px 30px; font-weight:900; border-radius:4px; font-size:18px; cursor:pointer;">Donate now</button>
-    </div>
-</section>
-
-<!-- ===== CONTACT SECTION (oculto) ===== -->
-<section id="contact-section">
-    <div class="container">
-        <div class="contact-form">
-            <h2>Contact us</h2>
-            <p>We would love to hear from you. Please fill out the form below and we will get back to you as soon as possible.</p>
-            <form id="contactForm" onsubmit="submitForm(event)">
-                <label for="name">Full name</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email address</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Message</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Send message</button>
-            </form>
-            <div id="confirmation" class="confirmation">✅ Your message has been sent successfully! We will respond shortly.</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== FOOTER ===== -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div>
-                <img src="https://www.unicef.org/sites/default/files/styles/logo/public/English_9.png.webp?itok=8H0Aa4or" alt="UNICEF" style="height:32px; filter: brightness(0) invert(1);">
-                <p style="color:#c8d9e1; margin-top:12px;">A nonprofit website inspired by modern global humanitarian UX.</p>
-            </div>
-            <div>
-                <b>Explore</b>
-                <a href="#work">What we do</a>
-                <a href="#stories">Stories</a>
-                <a href="#where">Where we work</a>
-                <a href="#about">Who we are</a>
-            </div>
-            <div>
-                <b>Connect</b>
-                <a href="#" onclick="showContact(event)">Contact</a>
-                <a href="#">Newsletter</a>
-                <a href="#">Partners</a>
-            </div>
-            <div>
-                <b>Legal</b>
-                <a href="#">Privacy</a>
-                <a href="#">Terms</a>
-                <a href="#">Accessibility</a>
-            </div>
-        </div>
-        <div class="footer-bottom">© 2026 UNICEF · For every child</div>
-    </div>
-</footer>
-
-<!-- ===== JAVASCRIPT ===== -->
-<script>
-    // Mostrar la sección de contacto
-    function showContact(e) {
-        e.preventDefault();
-        const section = document.getElementById('contact-section');
-        section.style.display = 'block';
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Envío del formulario
-    function submitForm(e) {
-        e.preventDefault();
-        const form = document.getElementById('contactForm');
-        const confirm = document.getElementById('confirmation');
-        confirm.classList.add('show');
-        form.reset();
-        setTimeout(() => confirm.classList.remove('show'), 5000);
-    }
-
-    // Ocultar contacto al inicio
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('contact-section').style.display = 'none';
-    });
-</script>
-
-</body>
-    </html>
+<!-- ===== ARTÍC
