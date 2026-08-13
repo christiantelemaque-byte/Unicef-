@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>UNICEF — For every child</title>
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" type="image/png" href="https://logos-world.net/wp-content/uploads/2020/10/UNICEF-Logo.png">
+    <link rel="shortcut icon" href="https://logos-world.net/wp-content/uploads/2020/10/UNICEF-Logo.png">
     <script src="https://js.stripe.com/v3/">
     </script>
     <style>
         /* ============================================================
-           RESET Y BASE (exactamente igual que antes)
+           RESET Y BASE
            ============================================================ */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -1413,7 +1416,7 @@
         }
 
         // =============================================================
-        // STRIPE PAYMENT ELEMENT (FIXED: elements.submit())
+        // STRIPE PAYMENT ELEMENT
         // =============================================================
         const stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
         let elements;
@@ -1524,7 +1527,6 @@
                     clientSecret: paymentIntentClientSecret,
                     confirmParams: {
                         return_url: window.location.href + '?payment=success',
-                        // No payment_method_data needed; it comes from elements.submit()
                     },
                 });
 
