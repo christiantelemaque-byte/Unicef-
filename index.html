@@ -8,7 +8,7 @@
     </script>
     <style>
         /* ============================================================
-           RESET Y BASE
+           RESET Y BASE (exactamente igual que antes)
            ============================================================ */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -1117,8 +1117,6 @@
         </div>
     </div>
 
-    <!-- (Otros artículos: remarks, education, vaccines, climate, gaza, ukraine, climate-resilience – se añaden de la misma forma) -->
-
     <!-- ============================================================
     DONATION PAGE (PAYMENT ELEMENT)
     ============================================================ -->
@@ -1247,9 +1245,7 @@
         // =============================================================
         // CONFIGURATION
         // =============================================================
-        // ✅ Your Supabase Project URL
         const SUPABASE_PROJECT_URL = 'https://iiceaseqdzcdfgkiinnx.supabase.co';
-        // ✅ NEW public function name (no JWT required)
         const EDGE_FUNCTION_NAME = 'donation-processor';
 
         // =============================================================
@@ -1270,7 +1266,6 @@
         }
 
         function showLoading() { loadingOverlay.classList.add('show'); }
-
         function hideLoading() { loadingOverlay.classList.remove('show'); }
 
         // =============================================================
@@ -1383,7 +1378,6 @@
             donationPage.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
-            // Reset
             setDonationType('once');
             selectAmount(50);
             $('customAmount').value = '';
@@ -1419,7 +1413,7 @@
         }
 
         // =============================================================
-        // STRIPE PAYMENT ELEMENT (using public edge function)
+        // STRIPE PAYMENT ELEMENT (FIXED: elements.submit())
         // =============================================================
         const stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
         let elements;
@@ -1432,7 +1426,6 @@
             const isMonthly = donationType === 'monthly';
 
             try {
-                // ✅ Call the NEW public function `donation-processor`
                 const response = await fetch(`${SUPABASE_PROJECT_URL}/functions/v1/${EDGE_FUNCTION_NAME}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -1452,7 +1445,6 @@
                 }
 
                 const data = await response.json();
-
                 if (!data.clientSecret) {
                     throw new Error('No clientSecret returned from server.');
                 }
@@ -1504,7 +1496,7 @@
         }
 
         // =============================================================
-        // PROCESS DONATION
+        // PROCESS DONATION (with elements.submit())
         // =============================================================
         async function processDonation() {
             const donateBtn = $('donateSubmitBtn');
@@ -1524,17 +1516,15 @@
                     throw new Error('Failed to initialize payment method.');
                 }
 
+                // ✅ CRITICAL FIX: Call elements.submit() before confirming payment
+                await elements.submit();
+
                 const { error, paymentIntent } = await stripe.confirmPayment({
                     elements: elements,
                     clientSecret: paymentIntentClientSecret,
                     confirmParams: {
                         return_url: window.location.href + '?payment=success',
-                        payment_method_data: {
-                            billing_details: {
-                                name: 'Donor',
-                                email: 'donor@example.com',
-                            },
-                        },
+                        // No payment_method_data needed; it comes from elements.submit()
                     },
                 });
 
@@ -1552,7 +1542,6 @@
                         paymentElement.clear();
                     }
                 } else if (paymentIntent && paymentIntent.status === 'requires_action') {
-                    // Stripe will handle the action automatically
                     showToast('Please complete the authentication step.');
                 }
 
