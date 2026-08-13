@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>UNICEF — For every child</title>
+    <script src="https://js.stripe.com/v3/">
+    </script>
     <style>
         /* ===== RESET ===== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -386,7 +388,9 @@
         }
         .article-page .content p { margin-bottom: 14px; }
 
-        /* ===== PÁGINA DE DONACIÓN ===== */
+        /* ============================================================ */
+        /* ===== PÁGINA DE DONACIÓN (con Stripe) ===== */
+        /* ============================================================ */
         .donation-page {
             display: none;
             padding: 40px 0 60px;
@@ -425,7 +429,7 @@
         }
         .donation-wrapper .subhead strong { color: #003b5c; }
 
-        /* Tabs: One-time / Monthly */
+        /* Tabs */
         .donation-tabs {
             display: flex;
             gap: 0;
@@ -452,7 +456,7 @@
         .donation-tabs button:first-child { border-radius: 8px 0 0 8px; }
         .donation-tabs button:last-child { border-radius: 0 8px 8px 0; }
 
-        /* Montos predeterminados */
+        /* Montos */
         .amount-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -511,7 +515,7 @@
         }
         .custom-amount-wrap input::placeholder { color: #b0c4d0; }
 
-        /* Checkbox de dedicación */
+        /* Dedicación */
         .dedicate-wrap {
             display: flex;
             align-items: center;
@@ -528,7 +532,36 @@
             color: #17384a;
         }
 
-        /* Botón de donar */
+        /* ===== STRIPE FIELDS ===== */
+        .stripe-field {
+            padding: 12px 14px;
+            border-radius: 8px;
+            border: 1.5px solid #dce5ea;
+            background: #fafbfc;
+            transition: 0.2s;
+            min-height: 48px;
+        }
+        .stripe-field.StripeElement--focus {
+            border-color: #0066a1;
+            box-shadow: 0 0 0 3px rgba(0,102,161,0.08);
+        }
+        .stripe-field.StripeElement--invalid {
+            border-color: #ef4444;
+        }
+        #donation-card-errors {
+            color: #ef4444;
+            font-size: 14px;
+            margin-top: 8px;
+        }
+        .card-row {
+            display: flex;
+            gap: 10px;
+        }
+        .card-row .field {
+            flex: 1;
+        }
+
+        /* Botón donar */
         .donate-submit-btn {
             background: #ffcf3f;
             color: #003b5c;
@@ -543,6 +576,11 @@
             margin-bottom: 20px;
         }
         .donate-submit-btn:hover { background: #f0b800; }
+        .donate-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
 
         /* Métodos de pago */
         .payment-methods {
@@ -698,6 +736,58 @@
             color: #b7cbd5;
         }
 
+        /* ===== TOAST ===== */
+        #toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 40px;
+            display: none;
+            z-index: 999;
+            max-width: 90%;
+            text-align: center;
+            font-size: 14px;
+            border: 1px solid #2a2a2a;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+        }
+        #toast.show {
+            display: block;
+            animation: fadeUp 0.4s ease;
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+            100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+
+        /* ===== LOADING OVERLAY ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 300;
+        }
+        .loading-overlay.show { display: flex; }
+        .spinner {
+            width: 44px;
+            height: 44px;
+            border: 4px solid rgba(212,175,55,0.15);
+            border-top-color: #d4af37;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .main-nav { display: none; }
@@ -728,6 +818,7 @@
             .donation-wrapper h1 { font-size: 28px; }
             .amount-grid { grid-template-columns: repeat(2, 1fr); }
             .payment-methods .pm-divider { display: none; }
+            .card-row { flex-direction: column; }
         }
         @media (max-width: 480px) {
             .header-top { padding: 6px 10px; }
@@ -757,6 +848,14 @@
     </style>
 </head>
 <body>
+
+<!-- ===== LOADING OVERLAY ===== -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div id="toast"></div>
 
 <!-- ============================================================ -->
 <!-- ===== HEADER ===== -->
@@ -1156,7 +1255,7 @@
 </div>
 
 <!-- ============================================================ -->
-<!-- ===== PÁGINA DE DONACIÓN ===== -->
+<!-- ===== PÁGINA DE DONACIÓN CON STRIPE ===== -->
 <!-- ============================================================ -->
 <div class="donation-page" id="donation-page">
     <div class="container">
@@ -1169,13 +1268,13 @@
                 Your tax-deductible donation to UNICEF USA helps ensure the world’s most vulnerable children get the nutrition, water, protection, education and health care they need to survive and thrive. <strong>You can make a difference today.</strong>
             </p>
 
-            <!-- Tabs: One-time / Monthly -->
+            <!-- Tabs -->
             <div class="donation-tabs">
                 <button class="active" data-type="once" onclick="setDonationType('once')">Give once</button>
                 <button data-type="monthly" onclick="setDonationType('monthly')">❤️ Monthly</button>
             </div>
 
-            <!-- Montos predeterminados -->
+            <!-- Montos -->
             <div class="amount-grid" id="amountGrid">
                 <button class="amount-btn" data-amount="1000" onclick="selectAmount(1000)">$1,000</button>
                 <button class="amount-btn" data-amount="500" onclick="selectAmount(500)">$500</button>
@@ -1198,8 +1297,30 @@
                 <label for="dedicateCheck">Dedicate this donation</label>
             </div>
 
-            <!-- Botón de donar -->
-            <button class="donate-submit-btn" onclick="processDonation()">Donate now</button>
+            <!-- ===== STRIPE CARD FIELDS ===== -->
+            <div style="margin: 20px 0 16px;">
+                <div class="field">
+                    <input type="text" id="donationCardholderName" placeholder="Cardholder Name (ex: John Doe)" style="width:100%; padding:12px 14px; border-radius:8px; border:1.5px solid #dce5ea; font-size:15px; background:#fafbfc;" />
+                </div>
+                <div class="field">
+                    <div id="donation-card-number" class="stripe-field"></div>
+                </div>
+                <div class="card-row">
+                    <div class="field">
+                        <div id="donation-card-expiry" class="stripe-field"></div>
+                    </div>
+                    <div class="field">
+                        <div id="donation-card-cvc" class="stripe-field"></div>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="text" id="donation-card-postal" placeholder="ZIP / Postal Code (optional)" style="width:100%; padding:12px 14px; border-radius:8px; border:1.5px solid #dce5ea; font-size:15px; background:#fafbfc;" />
+                </div>
+                <div id="donation-card-errors"></div>
+            </div>
+
+            <!-- Botón donar -->
+            <button class="donate-submit-btn" id="donateSubmitBtn">Donate now</button>
 
             <!-- Métodos de pago -->
             <div class="payment-methods">
@@ -1286,43 +1407,69 @@
 <!-- ===== JAVASCRIPT ===== -->
 <!-- ============================================================ -->
 <script>
-    // ===== MOBILE MENU =====
+    // =============================================================
+    // DOM REFS
+    // =============================================================
+    const $ = id => document.getElementById(id);
+    const toast = $('toast');
+    const loadingOverlay = $('loadingOverlay');
+
+    // =============================================================
+    // TOAST
+    // =============================================================
+    function showToast(msg, duration = 3000) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toast._timer);
+        toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
+    }
+
+    // =============================================================
+    // LOADING
+    // =============================================================
+    function showLoading() { loadingOverlay.classList.add('show'); }
+
+    function hideLoading() { loadingOverlay.classList.remove('show'); }
+
+    // =============================================================
+    // MOBILE MENU
+    // =============================================================
     function toggleMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('mobileOverlay');
-        const hamburger = document.getElementById('hamburger');
+        const menu = $('mobileMenu');
+        const overlay = $('mobileOverlay');
+        const hamburger = $('hamburger');
         menu.classList.toggle('open');
         overlay.classList.toggle('open');
         hamburger.classList.toggle('active');
     }
 
     function closeMobileMenu() {
-        const menu = document.getElementById('mobileMenu');
-        const overlay = document.getElementById('mobileOverlay');
-        const hamburger = document.getElementById('hamburger');
+        const menu = $('mobileMenu');
+        const overlay = $('mobileOverlay');
+        const hamburger = $('hamburger');
         menu.classList.remove('open');
         overlay.classList.remove('open');
         hamburger.classList.remove('active');
     }
 
-    // ===== MOSTRAR / OCULTAR ARTÍCULOS =====
+    // =============================================================
+    // MOSTRAR / OCULTAR ARTÍCULOS
+    // =============================================================
     function showArticle(id) {
-        document.getElementById('homeContent').style.display = 'none';
-        document.getElementById('home').style.display = 'none';
-        document.getElementById('donation-page').classList.remove('active');
+        $('homeContent').style.display = 'none';
+        $('home').style.display = 'none';
+        $('donation-page').classList.remove('active');
         document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
-        const article = document.getElementById('article-' + id);
-        if (article) {
-            article.classList.add('active');
-        }
+        const article = $('article-' + id);
+        if (article) article.classList.add('active');
         window.scrollTo({ top: 0, behavior: 'smooth' });
         closeMobileMenu();
     }
 
     function showHome() {
-        document.getElementById('homeContent').style.display = 'block';
-        document.getElementById('home').style.display = 'block';
-        document.getElementById('donation-page').classList.remove('active');
+        $('homeContent').style.display = 'block';
+        $('home').style.display = 'block';
+        $('donation-page').classList.remove('active');
         document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
         window.scrollTo({ top: 0, behavior: 'smooth' });
         closeMobileMenu();
@@ -1330,7 +1477,7 @@
 
     function scrollToSection(id) {
         setTimeout(() => {
-            const el = document.getElementById(id);
+            const el = $(id);
             if (el) {
                 const offset = 120;
                 const top = el.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -1339,28 +1486,20 @@
         }, 100);
     }
 
-    // ===== DONACIÓN =====
-    let donationType = 'once'; // 'once' o 'monthly'
+    // =============================================================
+    // DONACIÓN
+    // =============================================================
+    let donationType = 'once';
     let selectedAmount = 50;
-
-    function showDonation() {
-        document.getElementById('homeContent').style.display = 'none';
-        document.getElementById('home').style.display = 'none';
-        document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
-        document.getElementById('donation-page').classList.add('active');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-        closeMobileMenu();
-        // Resetear selección
-        setDonationType('once');
-        selectAmount(50);
-        document.getElementById('customAmount').value = '';
-    }
 
     function setDonationType(type) {
         donationType = type;
         document.querySelectorAll('.donation-tabs button').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.type === type);
         });
+        if (type === 'monthly') {
+            showToast('Monthly donations will be available soon.');
+        }
     }
 
     function selectAmount(amount) {
@@ -1368,7 +1507,10 @@
         document.querySelectorAll('.amount-btn').forEach(btn => {
             btn.classList.toggle('selected', parseInt(btn.dataset.amount) === amount);
         });
-        document.getElementById('customAmount').value = '';
+        const customField = $('customAmount');
+        customField.value = amount;
+        // Disparar evento para actualizar selectedAmount
+        customAmountChanged(amount);
     }
 
     function customAmountChanged(value) {
@@ -1378,23 +1520,12 @@
         }
     }
 
-    function processDonation() {
-        // Obtener el monto final (del campo personalizado o del seleccionado)
-        const customVal = document.getElementById('customAmount').value;
-        let finalAmount = selectedAmount;
-        if (customVal && parseFloat(customVal) > 0) {
-            finalAmount = parseFloat(customVal);
-        }
-        const typeLabel = donationType === 'once' ? 'one-time' : 'monthly';
-        const dedication = document.getElementById('dedicateCheck').checked ? ' (dedicated)' : '';
-        alert(`Thank you for your ${typeLabel} donation of $${finalAmount.toFixed(2)} USD${dedication}!\n\nYour support helps save children's lives.`);
-        // Aquí podrías redirigir a un formulario de pago real.
-    }
-
-    // ===== CONTACTO =====
+    // =============================================================
+    // CONTACTO
+    // =============================================================
     function showContact(e) {
         if (e) e.preventDefault();
-        const section = document.getElementById('contact-section');
+        const section = $('contact-section');
         showHome();
         setTimeout(() => {
             section.style.display = 'block';
@@ -1405,26 +1536,211 @@
         closeMobileMenu();
     }
 
-    // ===== FORMULARIO =====
     function submitForm(e) {
         e.preventDefault();
-        const form = document.getElementById('contactForm');
-        const confirm = document.getElementById('confirmation');
+        const form = $('contactForm');
+        const confirm = $('confirmation');
         confirm.classList.add('show');
         form.reset();
         setTimeout(() => confirm.classList.remove('show'), 5000);
     }
 
-    // ===== INICIALIZACIÓN =====
+    // =============================================================
+    // MOSTRAR DONACIÓN
+    // =============================================================
+    function showDonation() {
+        $('homeContent').style.display = 'none';
+        $('home').style.display = 'none';
+        document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
+        const donationPage = $('donation-page');
+        donationPage.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        closeMobileMenu();
+        // Reiniciar selección
+        setDonationType('once');
+        selectAmount(50);
+        $('customAmount').value = '';
+        // Limpiar errores
+        $('donation-card-errors').textContent = '';
+        // Resetear campos Stripe si es necesario
+    }
+
+    // =============================================================
+    // STRIPE - INICIALIZACIÓN
+    // =============================================================
+    const stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
+    const elements = stripe.elements();
+
+    // Crear elementos de tarjeta
+    const donationCardNumber = elements.create('cardNumber', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#17384a',
+                '::placeholder': { color: '#888' }
+            }
+        }
+    });
+    donationCardNumber.mount('#donation-card-number');
+
+    const donationCardExpiry = elements.create('cardExpiry', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#17384a',
+                '::placeholder': { color: '#888' }
+            }
+        }
+    });
+    donationCardExpiry.mount('#donation-card-expiry');
+
+    const donationCardCvc = elements.create('cardCvc', {
+        style: {
+            base: {
+                fontSize: '16px',
+                color: '#17384a',
+                '::placeholder': { color: '#888' }
+            }
+        }
+    });
+    donationCardCvc.mount('#donation-card-cvc');
+
+    const donationCardErrors = $('donation-card-errors');
+    [donationCardNumber, donationCardExpiry, donationCardCvc].forEach(el => {
+        el.on('change', function(event) {
+            donationCardErrors.textContent = event.error ? event.error.message : '';
+        });
+    });
+
+    // =============================================================
+    // PROCESAR DONACIÓN CON STRIPE
+    // =============================================================
+    async function processDonation() {
+        const donateBtn = $('donateSubmitBtn');
+
+        // Obtener monto
+        const customVal = $('customAmount').value;
+        let amount = selectedAmount;
+        if (customVal && parseFloat(customVal) > 0) {
+            amount = parseFloat(customVal);
+        }
+        if (!amount || amount <= 0) {
+            showToast('Please enter a valid donation amount.');
+            return;
+        }
+
+        // Obtener nombre del tarjetahabiente
+        const cardholderName = $('donationCardholderName').value.trim();
+        if (!cardholderName) {
+            showToast('Please enter the cardholder name.');
+            return;
+        }
+
+        // Obtener código postal (opcional)
+        const postal = $('donation-card-postal').value.trim();
+
+        // Deshabilitar botón
+        donateBtn.disabled = true;
+        donateBtn.textContent = 'Processing…';
+        showLoading();
+
+        try {
+            // 1. Crear PaymentMethod
+            const { error, paymentMethod } = await stripe.createPaymentMethod({
+                type: 'card',
+                card: donationCardNumber,
+                billing_details: {
+                    name: cardholderName,
+                    address: { postal_code: postal || undefined },
+                },
+            });
+
+            if (error) {
+                donationCardErrors.textContent = error.message;
+                showToast('Payment error: ' + error.message);
+                donateBtn.disabled = false;
+                donateBtn.textContent = 'Donate now';
+                hideLoading();
+                return;
+            }
+
+            // 2. Llamar a la Edge Function de Supabase
+            const response = await fetch(
+                'https://iiceaseqdzcdfgkiinnx.supabase.co/functions/v1/quick-processor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        // No necesitamos autenticación para donaciones, pero la función puede esperar un token
+                        // Si la función requiere autenticación, usamos un token anónimo o modificamos la función
+                    },
+                    body: JSON.stringify({
+                        paymentMethodId: paymentMethod.id,
+                        amount: amount,
+                        userId: 'donation_anonymous', // o un ID fijo para donaciones
+                        email: 'donor@example.com', // podríamos pedir email al usuario
+                        donationType: donationType, // 'once' o 'monthly'
+                    }),
+                }
+            );
+
+            const data = await response.json();
+
+            if (response.ok && data && data.success) {
+                const typeLabel = donationType === 'once' ? 'one-time' : 'monthly';
+                showToast(`✅ Thank you for your ${typeLabel} donation of $${amount.toFixed(2)}!`);
+                // Reiniciar campos
+                $('customAmount').value = '';
+                $('donationCardholderName').value = '';
+                $('donation-card-postal').value = '';
+                donationCardNumber.clear();
+                donationCardExpiry.clear();
+                donationCardCvc.clear();
+                document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+                selectAmount(50);
+            } else {
+                showToast('Payment failed: ' + (data?.error || 'Unknown error'));
+                donationCardErrors.textContent = data?.error || 'Payment failed';
+            }
+        } catch (err) {
+            console.error(err);
+            showToast('Error: ' + err.message);
+            donationCardErrors.textContent = err.message;
+        } finally {
+            donateBtn.disabled = false;
+            donateBtn.textContent = 'Donate now';
+            hideLoading();
+        }
+    }
+
+    // =============================================================
+    // EVENT LISTENERS
+    // =============================================================
+    $('donateSubmitBtn').addEventListener('click', processDonation);
+
+    // =============================================================
+    // INIT
+    // =============================================================
     document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('contact-section').style.display = 'none';
-        document.getElementById('homeContent').style.display = 'block';
-        document.getElementById('home').style.display = 'block';
-        document.getElementById('donation-page').classList.remove('active');
-        // Seleccionar monto por defecto
+        $('contact-section').style.display = 'none';
+        $('homeContent').style.display = 'block';
+        $('home').style.display = 'block';
+        $('donation-page').classList.remove('active');
         selectAmount(50);
     });
+
+    // Exponer funciones globales
+    window.toggleMobileMenu = toggleMobileMenu;
+    window.closeMobileMenu = closeMobileMenu;
+    window.showHome = showHome;
+    window.showArticle = showArticle;
+    window.scrollToSection = scrollToSection;
+    window.showDonation = showDonation;
+    window.showContact = showContact;
+    window.submitForm = submitForm;
+    window.setDonationType = setDonationType;
+    window.selectAmount = selectAmount;
+    window.customAmountChanged = customAmountChanged;
 </script>
 
 </body>
-    </html>
+                        </html>
