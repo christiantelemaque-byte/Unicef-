@@ -7,8 +7,7 @@
     <!-- ===== FAVICON ===== -->
     <link rel="icon" type="image/png" href="https://logos-world.net/wp-content/uploads/2020/10/UNICEF-Logo.png">
     <link rel="shortcut icon" href="https://logos-world.net/wp-content/uploads/2020/10/UNICEF-Logo.png">
-    <script src="https://js.stripe.com/v3/">
-    </script>
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         /* ============================================================
            RESET Y BASE
@@ -1103,7 +1102,7 @@
     </div><!-- /homeContent -->
 
     <!-- ============================================================
-    ARTÍCULOS COMPLETOS (ejemplo)
+    ARTÍCULOS COMPLETOS
     ============================================================ -->
     <div class="article-page" id="article-sudan">
         <div class="container">
@@ -1252,6 +1251,14 @@
         const EDGE_FUNCTION_NAME = 'donation-processor';
 
         // =============================================================
+        // STRIPE DECLARATIONS (must be at top to avoid TDZ error)
+        // =============================================================
+        const stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
+        let elements = null;
+        let paymentElement = null;
+        let paymentIntentClientSecret = null;
+
+        // =============================================================
         // DOM REFS
         // =============================================================
         const $ = id => document.getElementById(id);
@@ -1348,9 +1355,7 @@
             document.querySelectorAll('.amount-btn').forEach(btn => {
                 btn.classList.toggle('selected', parseInt(btn.dataset.amount) === amount);
             });
-            const customField = $('customAmount');
-            customField.value = amount;
-            customAmountChanged(amount);
+            $('customAmount').value = amount;
             if (amount > 0) {
                 setupPaymentElement(amount);
             }
@@ -1418,11 +1423,6 @@
         // =============================================================
         // STRIPE PAYMENT ELEMENT
         // =============================================================
-        const stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
-        let elements;
-        let paymentElement;
-        let paymentIntentClientSecret = null;
-
         async function setupPaymentElement(amount) {
             if (!amount || amount <= 0) return;
 
@@ -1499,7 +1499,7 @@
         }
 
         // =============================================================
-        // PROCESS DONATION (with elements.submit())
+        // PROCESS DONATION
         // =============================================================
         async function processDonation() {
             const donateBtn = $('donateSubmitBtn');
@@ -1519,7 +1519,7 @@
                     throw new Error('Failed to initialize payment method.');
                 }
 
-                // ✅ CRITICAL FIX: Call elements.submit() before confirming payment
+                // ✅ CRITICAL: Call elements.submit() before confirming payment
                 await elements.submit();
 
                 const { error, paymentIntent } = await stripe.confirmPayment({
