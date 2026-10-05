@@ -257,8 +257,10 @@
             <div class="container">
                 <h2 class="section-title">Stories that matter</h2>
                 <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
+
+                <!-- ✅ FIXED: Featured "Remarks" now uses the local image UN711821_.jpg -->
                 <div class="featured-block" onclick="showArticle('remarks')">
-                    <div class="featured-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/hero_mobile/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                    <div class="featured-img" style="background-image: url('UN711821_.jpg');"></div>
                     <div class="featured-body">
                         <div class="card-tag">Remarks</div>
                         <h2>UNICEF Deputy Executive Director's remarks at the UN Security Council</h2>
@@ -266,6 +268,7 @@
                         <span class="card-link">Read now →</span>
                     </div>
                 </div>
+
                 <div class="card-grid">
                     <div class="card" onclick="showArticle('education')">
                         <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI502683.jpg?itok=jpV4_IPr');"></div>
@@ -516,22 +519,14 @@
     </footer>
 
     <script>
-        // =============================================================
-        // CONFIGURATION
-        // =============================================================
         const SUPABASE_PROJECT_URL = 'https://iiceaseqdzcdfgkiinnx.supabase.co';
         const EDGE_FUNCTION_NAME = 'donation-processor';
 
         console.log('🚀 Script loaded');
 
-        // =============================================================
-        // DOM HELPERS
-        // =============================================================
         const $ = id => document.getElementById(id);
 
-        // =============================================================
-        // LAZY STRIPE STATE (not initialized at top → avoids script crash)
-        // =============================================================
+        // Lazy Stripe state
         let stripe = null;
         let elements = null;
         let paymentElement = null;
@@ -546,9 +541,6 @@
             return stripe;
         }
 
-        // =============================================================
-        // TOAST & LOADING
-        // =============================================================
         function showToast(msg, duration = 3000) {
             const toast = $('toast');
             if (!toast) return;
@@ -561,9 +553,6 @@
         function showLoading() { const el = $('loadingOverlay'); if (el) el.classList.add('show'); }
         function hideLoading() { const el = $('loadingOverlay'); if (el) el.classList.remove('show'); }
 
-        // =============================================================
-        // MOBILE MENU
-        // =============================================================
         function toggleMobileMenu() {
             const menu = $('mobileMenu');
             const overlay = $('mobileOverlay');
@@ -582,9 +571,6 @@
             if (hamburger) hamburger.classList.remove('active');
         }
 
-        // =============================================================
-        // NAVIGATION
-        // =============================================================
         function showArticle(id) {
             $('homeContent').style.display = 'none';
             $('home').style.display = 'none';
@@ -616,9 +602,6 @@
             }, 100);
         }
 
-        // =============================================================
-        // DONATION LOGIC
-        // =============================================================
         let donationType = 'once';
         let selectedAmount = 50;
 
@@ -661,10 +644,7 @@
             const donationPage = $('donation-page');
             const errorsEl = $('payment-element-errors');
 
-            if (!donationPage) {
-                console.error('❌ donation-page element not found');
-                return;
-            }
+            if (!donationPage) { console.error('❌ donation-page element not found'); return; }
 
             if (homeContent) homeContent.style.display = 'none';
             if (home) home.style.display = 'none';
@@ -678,13 +658,9 @@
             if ($('customAmount')) $('customAmount').value = '';
             if (errorsEl) errorsEl.textContent = '';
 
-            // Set up Payment Element (lazy — will load Stripe on first call)
             setTimeout(() => { setupPaymentElement(50); }, 300);
         }
 
-        // =============================================================
-        // CONTACT
-        // =============================================================
         function showContact(e) {
             if (e) e.preventDefault();
             const section = $('contact-section');
@@ -709,9 +685,6 @@
             setTimeout(() => { if (confirm) confirm.classList.remove('show'); }, 5000);
         }
 
-        // =============================================================
-        // STRIPE PAYMENT ELEMENT
-        // =============================================================
         async function setupPaymentElement(amount) {
             if (!amount || amount <= 0) return false;
 
@@ -719,7 +692,6 @@
             const isMonthly = donationType === 'monthly';
 
             try {
-                // ✅ Lazy-init Stripe (this is where it might fail if ad blocker)
                 let stripeClient;
                 try {
                     stripeClient = getStripe();
@@ -790,9 +762,6 @@
             }
         }
 
-        // =============================================================
-        // PROCESS DONATION
-        // =============================================================
         async function processDonation() {
             const donateBtn = $('donateSubmitBtn');
             const errorsEl = $('payment-element-errors');
@@ -811,7 +780,6 @@
                 const isSetup = await setupPaymentElement(amount);
                 if (!isSetup) throw new Error('Failed to initialize payment method.');
 
-                // ✅ Required: submit before confirming
                 await elements.submit();
 
                 const { error, paymentIntent } = await stripe.confirmPayment({
@@ -845,17 +813,11 @@
             }
         }
 
-        // =============================================================
-        // EVENT LISTENERS
-        // =============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const btn = $('donateSubmitBtn');
             if (btn) btn.addEventListener('click', processDonation);
         });
 
-        // =============================================================
-        // INIT (runs whether DOMContentLoaded already fired or not)
-        // =============================================================
         function initPage() {
             const contactSection = $('contact-section');
             const homeContent = $('homeContent');
@@ -868,10 +830,8 @@
             if (home) home.style.display = 'block';
             if (donationPage) donationPage.classList.remove('active');
 
-            // Attach submit handler
             if (btn) btn.addEventListener('click', processDonation);
 
-            // Set default amount WITHOUT triggering Stripe setup
             selectedAmount = 50;
             document.querySelectorAll('.amount-btn').forEach(b => {
                 b.classList.toggle('selected', parseInt(b.dataset.amount) === 50);
@@ -883,13 +843,9 @@
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initPage);
         } else {
-            // DOM already loaded (script ran late)
             initPage();
         }
 
-        // =============================================================
-        // EXPOSE GLOBALS (immediately, so onclick works)
-        // =============================================================
         window.toggleMobileMenu = toggleMobileMenu;
         window.closeMobileMenu = closeMobileMenu;
         window.showHome = showHome;
