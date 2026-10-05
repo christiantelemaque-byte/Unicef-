@@ -73,11 +73,16 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         .article-page .back-link { display: inline-block; margin-bottom: 20px; color: #0066a1; font-weight: 700; cursor: pointer; }
         .article-page .back-link:hover { text-decoration: underline; }
-        .article-page .article-img { width: 100%; max-height: 360px; object-fit: cover; border-radius: 8px; margin: 12px 0 16px; background: #dce5ea; }
-        .article-page h1 { font-size: 32px; letter-spacing: -0.5px; margin: 6px 0 10px; }
-        .article-page .meta { color: #4a6a7a; font-size: 14px; margin-bottom: 14px; }
-        .article-page .content { font-size: 17px; line-height: 1.7; max-width: 780px; }
-        .article-page .content p { margin-bottom: 14px; }
+        .article-page .article-img { width: 100%; max-height: 460px; object-fit: cover; border-radius: 8px; margin: 12px 0 20px; background: #dce5ea; }
+        .article-page h1 { font-size: 36px; letter-spacing: -0.5px; margin: 6px 0 14px; line-height: 1.2; }
+        .article-page h2 { font-size: 24px; letter-spacing: -0.3px; margin: 28px 0 10px; color: #003b5c; }
+        .article-page h3 { font-size: 20px; margin: 22px 0 8px; color: #003b5c; }
+        .article-page .meta { color: #4a6a7a; font-size: 14px; margin-bottom: 18px; }
+        .article-page .content { font-size: 17px; line-height: 1.75; max-width: 800px; }
+        .article-page .content p { margin-bottom: 16px; }
+        .article-page .content blockquote { border-left: 4px solid #ffcf3f; padding-left: 18px; font-style: italic; color: #4a6a7a; margin: 20px 0; }
+        .article-page .content ul { margin: 12px 0 18px 22px; }
+        .article-page .content li { margin-bottom: 8px; }
         .donation-page { display: none; padding: 40px 0 60px; background: #f8fafc; }
         .donation-page.active { display: block; animation: fadeIn 0.3s ease; }
         .donation-page .back-link { display: inline-block; margin-bottom: 24px; color: #0066a1; font-weight: 700; cursor: pointer; }
@@ -161,6 +166,7 @@
             .section-title { font-size: 26px; }
             .card-grid { grid-template-columns: 1fr; }
             .article-page h1 { font-size: 26px; }
+            .article-page h2 { font-size: 21px; }
             .container { padding: 0 14px; }
             .contact-form { padding: 20px 16px; }
             .mobile-menu { width: 260px; right: -270px; }
@@ -258,7 +264,6 @@
                 <h2 class="section-title">Stories that matter</h2>
                 <p class="section-sub">Go beyond the headlines. Discover stories from communities, young people and partners working to create better futures for children.</p>
 
-                <!-- ✅ FIXED: Featured "Remarks" now uses the local image UN711821_.jpg -->
                 <div class="featured-block" onclick="showArticle('remarks')">
                     <div class="featured-img" style="background-image: url('UN711821_.jpg');"></div>
                     <div class="featured-body">
@@ -271,7 +276,7 @@
 
                 <div class="card-grid">
                     <div class="card" onclick="showArticle('education')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI502683.jpg?itok=jpV4_IPr');"></div>
+                        <div class="card-img" style="background-image: url('UN0803376.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Education</div>
                             <h3>Education in emergencies: keeping children learning</h3>
@@ -280,7 +285,7 @@
                         </div>
                     </div>
                     <div class="card" onclick="showArticle('vaccines')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI450179.jpg?itok=5sHqk3Y-');"></div>
+                        <div class="card-img" style="background-image: url('UN0679338.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Health</div>
                             <h3>Vaccines: protecting every child from preventable diseases</h3>
@@ -289,7 +294,7 @@
                         </div>
                     </div>
                     <div class="card" onclick="showArticle('climate')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                        <div class="card-img" style="background-image: url('CCRI_cm.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Climate</div>
                             <h3>Climate change is a child rights crisis</h3>
@@ -307,7 +312,7 @@
                 <p class="section-sub">In emergencies, fast action can help families find safety, essential services and hope.</p>
                 <div class="card-grid">
                     <div class="card" onclick="showArticle('gaza')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI822513.jpg?itok=tNkMuBtC');"></div>
+                        <div class="card-img" style="background-image: url('UNI820856.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Emergency appeal</div>
                             <h3>Gaza: children need urgent humanitarian support</h3>
@@ -316,7 +321,7 @@
                         </div>
                     </div>
                     <div class="card" onclick="showArticle('ukraine')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI483372.jpg?itok=3qH6Wj5a');"></div>
+                        <div class="card-img" style="background-image: url('UNI655464.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Conflict</div>
                             <h3>Ukraine: protecting children's future amid war</h3>
@@ -325,7 +330,7 @@
                         </div>
                     </div>
                     <div class="card" onclick="showArticle('climate-resilience')">
-                        <div class="card-img" style="background-image: url('https://www.unicef.org/sites/default/files/styles/media_thumbnail/public/UNI487659.jpg?itok=4q9_zqP9');"></div>
+                        <div class="card-img" style="background-image: url('uni666034_0.jpg');"></div>
                         <div class="card-body">
                             <div class="card-tag">Climate</div>
                             <h3>Building resilience for tomorrow</h3>
@@ -405,6 +410,7 @@
         </section>
     </div>
 
+    <!-- ============================ ARTICLE: SUDAN ============================ -->
     <div class="article-page" id="article-sudan">
         <div class="container">
             <span class="back-link" onclick="showHome()">← Back to home</span>
@@ -420,6 +426,549 @@
         </div>
     </div>
 
+    <!-- ============================ ARTICLE: REMARKS ============================ -->
+    <div class="article-page" id="article-remarks">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="UN711821_.jpg" alt="UN Security Council">
+            <div class="meta">Remarks | August 2026</div>
+            <h1>UNICEF Deputy Executive Director's remarks at the UN Security Council</h1>
+            <div class="content">
+                <p>Madam President, distinguished members of the Security Council,</p>
+                <p>I am here today to speak on behalf of the children of the West Bank, whose lives have been torn apart by escalating violence. The situation is dire, and it is deteriorating by the day.</p>
+                <p>Children are being killed, injured and displaced. Schools and hospitals are not safe havens. The psychological toll on an entire generation is immeasurable.</p>
+                <p>UNICEF calls on all parties to protect children, to respect international humanitarian law, and to allow unimpeded humanitarian access. We also call on Member States to do everything in their power to de-escalate the violence and to invest in peace.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: EDUCATION ============================ -->
+    <div class="article-page" id="article-education">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="UN0803376.jpg" alt="Children learning in a temporary classroom">
+            <div class="meta">Education | July 2026</div>
+            <h1>Education in emergencies: keeping children learning</h1>
+            <div class="content">
+
+                <p>In the chaos of war, displacement and natural disaster, one of the first casualties is often invisible. It isn't a building, a hospital or a bridge. It is a child's right to learn. When conflict forces families to flee their homes, when floods wash away entire villages, when earthquakes topple classrooms into rubble, the education of an entire generation can be put on hold — sometimes for years. UNICEF believes that even in the most fragile contexts, education cannot wait. It is not a luxury to be delivered once peace returns. It is a lifeline that must be provided in the middle of the storm.</p>
+
+                <p>Today, more than 224 million children and adolescents are affected by crises around the world. They live in countries torn apart by armed conflict, in regions devastated by climate shocks, in communities hosting refugees, or in areas where disease outbreaks have shut down every school. For these children, sitting in a classroom is not a given — it is a hope, a memory, and often a distant dream. UNICEF's Education in Emergencies programmes exist to turn that dream back into reality.</p>
+
+                <h2>Why education matters most in a crisis</h2>
+
+                <p>In stable societies, education is a fundamental right and a pathway to opportunity. In emergencies, it becomes something even more essential: a survival mechanism. Research consistently shows that children who can continue their education during and after a crisis are far less likely to be recruited into armed groups, forced into child labour, married early, or subjected to other forms of exploitation. A classroom — even a temporary one under a tarp — offers more than literacy and numeracy. It offers routine, structure and a sense of normality. It offers a place to make friends, to play, to simply be a child again.</p>
+
+                <p>For children who have witnessed violence, lost family members or been forced to flee their homes, schools can be the most powerful form of psychological first aid. Teachers trained in psychosocial support can spot the signs of trauma early and refer children to the care they need. Peer groups help children rebuild the social connections that trauma has severed. And the simple act of learning — of discovering that they can still master a new skill or solve a problem — restores a sense of agency and self-worth that violence tries to take away.</p>
+
+                <p>UNICEF has documented that during the COVID-19 pandemic, prolonged school closures led to sharp increases in mental health problems, child protection violations and learning losses. In emergencies, those risks multiply. Every day a child is out of school in a conflict zone is a day they are exposed to danger. Every month a child is out of the classroom in a refugee camp is a month they fall further behind peers in safer countries. Every year a girl is denied education because of displacement, early marriage becomes more likely. Education in emergencies is, quite simply, a protection intervention.</p>
+
+                <h2>A global crisis for a generation</h2>
+
+                <p>The scale of the challenge is staggering. From Syria to Sudan, from Ukraine to Yemen, from Haiti to the Democratic Republic of the Congo, millions of children are growing up knowing war better than they know peace. In some countries, conflict has lasted longer than the children themselves have been alive. The average duration of a civil war is now measured in decades, not years. This means entire childhoods are being lived inside crises, and for many children the only education they have ever received is one delivered under extraordinary circumstances.</p>
+
+                <p>Climate change is adding an entirely new layer of crisis. Droughts in the Horn of Africa, cyclones in Mozambique and Madagascar, floods in Pakistan and Bangladesh — these disasters destroy schools, displace families, and interrupt learning for millions of children every year. When a flood hits, it isn't only homes that are underwater; books, desks, records and the entire physical infrastructure of schooling can vanish in hours. Children who were already vulnerable are pushed even further to the margins, and the poorest are hit hardest of all.</p>
+
+                <p>The COVID-19 pandemic, meanwhile, showed the world just how quickly education can be disrupted on a global scale. At its peak, 1.6 billion learners were out of school. While wealthy countries pivoted rapidly to online learning, children in low-income countries and crisis zones were often left behind entirely. The pandemic widened existing inequalities and, in many places, undid years of progress in getting children into classrooms. Its legacy continues to shape the education landscape today.</p>
+
+                <h2>What UNICEF is doing on the ground</h2>
+
+                <p>UNICEF's Education in Emergencies response operates on multiple fronts, adapting to the unique realities of each crisis. There is no single template — what works in a refugee camp in Bangladesh looks very different from what works in a conflict zone in eastern Ukraine, or in a drought-affected village in Somalia. But across every context, some core principles guide the work.</p>
+
+                <h3>Creating safe learning spaces</h3>
+
+                <p>When formal schools are destroyed or occupied, UNICEF and partners set up temporary learning spaces. These can range from semi-permanent structures with proper roofs and walls to simple shade nets under which classes are held. The goal is to provide a physically safe place where children can gather, learn and interact. In camps for displaced families, these spaces often become community hubs, providing not just education but also psychosocial support, nutrition and a sense of community.</p>
+
+                <p>UNICEF also works with governments and partners to rehabilitate damaged schools whenever security allows. Rebuilding a school is more than reconstruction — it is a signal to families that life can return to normal, that their community has a future, and that their children's education is worth investing in.</p>
+
+                <h3>Training teachers</h3>
+
+                <p>Teachers are the backbone of any education system, and in emergencies, they become frontline humanitarian workers. UNICEF trains teachers not only in curriculum delivery but also in how to support children affected by trauma, how to identify protection risks, and how to keep learning going under pressure. In many crisis contexts, local teachers are themselves affected by the same conflict or disaster — they too have been displaced, they too have lost loved ones. Supporting their wellbeing is as essential as supporting the children's.</p>
+
+                <p>Where qualified teachers are scarce, UNICEF recruits and trains community members to serve as teaching assistants or facilitators. This ensures that even in the hardest-to-reach areas, children have an adult who can guide their learning. Many of these new teachers go on to become permanent members of their local education workforce once the crisis has passed, strengthening the system for years to come.</p>
+
+                <h3>Providing learning materials</h3>
+
+                <p>When children flee their homes, they leave behind their school bags, their textbooks and their exercise books. UNICEF distributes "school-in-a-box" kits that contain everything a classroom of 40 students needs to start learning again — pencils, notebooks, chalk, posters, and a teacher's guide. These kits are designed to be lightweight, durable and adaptable to different languages and curricula. Over the years, millions of these kits have been deployed in emergencies around the world.</p>
+
+                <p>In addition to physical materials, UNICEF is increasingly investing in digital learning. Tablets, offline educational content, and radio or TV-based lessons allow children to keep learning even when they cannot physically attend a classroom. During the pandemic, this digital infrastructure proved invaluable, and it continues to be a critical tool in reaching children who are cut off from formal schooling by conflict or distance.</p>
+
+                <h3>Protecting the most vulnerable</h3>
+
+                <p>Girls, children with disabilities, and children from minority communities face particular barriers to education in emergencies. Girls may be pulled out of school because of safety concerns, early marriage or domestic responsibilities. Children with disabilities often find temporary learning spaces inaccessible. Refugee children may face language barriers, discrimination or legal obstacles to enrollment.</p>
+
+                <p>UNICEF works to identify and dismantle these barriers. This means building latrines and safe spaces specifically for girls, training teachers in inclusive pedagogy, translating materials into the languages children speak, and advocating for policy changes that open classrooms to all children regardless of their status. The principle is simple: no child should be left behind because of who they are or where they come from.</p>
+
+                <h2>Stories from the field</h2>
+
+                <p>Behind every statistic is a child with a name, a story and a future. In the Democratic Republic of the Congo, a 12-year-old girl named Amina returned to school after two years of displacement. She had missed so much learning that she struggled to catch up with her peers, but a UNICEF-supported catch-up programme helped her rebuild the skills she needed. Today she is one of the top students in her class and dreams of becoming a teacher herself.</p>
+
+                <p>In Bangladesh, in one of the world's largest refugee camps, a 14-year-old boy named Rafiq learned to read and write for the first time in a UNICEF-supported learning centre. He had spent his entire childhood fleeing violence and had never had the opportunity to attend school. Now he helps other children in the camp with their lessons and hopes one day to become a doctor.</p>
+
+                <p>In Ukraine, a 9-year-old girl named Olena spent months attending school in a bomb shelter, her lessons interrupted by the sound of air raid sirens. Through UNICEF's online learning platform, she was able to keep up with her studies even when she could not safely attend in person. Her mother says the lessons gave Olena something to focus on during the darkest days of the war — a small piece of normalcy in a world turned upside down.</p>
+
+                <p>These are just three of millions of children whose lives have been touched by education in emergencies programmes. Each one reminds us that even in the most difficult circumstances, learning is possible. All it takes is the will to make it happen.</p>
+
+                <h2>The funding gap</h2>
+
+                <p>Despite its proven effectiveness, education in emergencies remains dramatically underfunded. Globally, education typically receives less than 3% of humanitarian funding, even though it is consistently among the top priorities identified by affected communities. This mismatch between need and resources means that millions of children are missing out on the education they desperately need.</p>
+
+                <p>UNICEF is calling on governments, donors and humanitarian actors to close this gap. Education cannot be treated as secondary to food, water or shelter — it is an equally essential component of any humanitarian response. Investing in education in emergencies is investing in the future stability, prosperity and resilience of entire societies. It is, in the truest sense, an investment in peace.</p>
+
+                <p>Every dollar spent on education in a crisis context returns many times over in the form of reduced child protection risks, improved health outcomes, greater economic productivity and stronger social cohesion. The evidence is clear. The only missing ingredient is the political will and the funding to act on it.</p>
+
+                <h2>Looking ahead</h2>
+
+                <p>The challenges facing children in emergencies have never been greater. Climate change, protracted conflict, mass displacement and global health crises are combining to create a perfect storm for the world's most vulnerable children. But the response has also never been stronger. Innovative approaches, new partnerships and the tireless commitment of teachers, parents and communities are proving that even in the darkest circumstances, learning can continue.</p>
+
+                <p>UNICEF's vision is a world where every child, no matter where they live or what they face, can access quality education. A world where a child's future is not determined by the circumstances of their birth, but by their own potential and effort. A world where education is never a casualty of war.</p>
+
+                <p>That world is possible. But it will only be built if we — governments, donors, humanitarian organizations and ordinary people who care — commit to making it happen. Education cannot wait. And neither can the children who are waiting for it.</p>
+
+                <p>Every child has the right to learn. Every child has the right to dream. Every child has the right to a future. In emergencies, those rights are most at risk, and it is precisely then that we must work hardest to protect them.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: VACCINES ============================ -->
+    <div class="article-page" id="article-vaccines">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="UN0679338.jpg" alt="Child receiving vaccine">
+            <div class="meta">Health | July 2026</div>
+            <h1>Vaccines: protecting every child from preventable diseases</h1>
+            <div class="content">
+
+                <p>Every year, vaccines save between 4 and 5 million lives around the world. They are among the most successful and cost-effective public health interventions in human history — responsible for eradicating smallpox, nearly eliminating polio, and dramatically reducing deaths from measles, tetanus, diphtheria and dozens of other diseases that once routinely killed or disabled children. Yet despite this extraordinary track record, one in five children worldwide still lacks access to the life-saving immunizations they need. The gap between what is possible and what is delivered is one of the most urgent challenges in global health today.</p>
+
+                <p>UNICEF is at the center of the global effort to close that gap. As the world's largest vaccine buyer, UNICEF procures more than 2 billion doses of vaccines every year on behalf of nearly 100 countries. These vaccines protect children against 20 different diseases and reach roughly 45% of the world's children under five. This makes UNICEF not only a major humanitarian actor but a critical pillar of global public health infrastructure — a supply chain that quite literally keeps millions of children alive.</p>
+
+                <h2>Why vaccines matter</h2>
+
+                <p>The value of vaccines extends far beyond the individual child who receives them. When a community is protected against disease, everyone benefits. Schools stay open. Parents can go to work. Health systems are freed up to focus on other priorities. Economies grow faster. Societies become more resilient to future health threats. The World Health Organization estimates that vaccines return $16 for every $1 invested in low- and middle-income countries — one of the highest returns of any public health intervention.</p>
+
+                <p>Vaccines are also a powerful equalizer. They protect children regardless of their family's income, their parents' education, or the wealth of their country. A child born in a remote village in sub-Saharan Africa or a crowded neighborhood in South Asia deserves the same protection as a child born in a wealthy capital city. UNICEF's immunization work is fundamentally about making that principle a reality — ensuring that geography and poverty do not determine a child's chance of survival.</p>
+
+                <p>Consider what vaccines have achieved in just the past few decades. In 1980, smallpox was declared eradicated — the first and only human disease to have been wiped out entirely. Polio, which once paralyzed more than 350,000 children every year, is now endemic in only a handful of countries, and the world is closer than ever to eradication. Measles deaths have fallen by more than 70% since 2000, saving an estimated 50 million lives. Maternal and neonatal tetanus has been eliminated in more than 40 countries. These are extraordinary achievements, and they are the direct result of sustained global investment in immunization.</p>
+
+                <h2>The challenges we still face</h2>
+
+                <p>Despite these successes, millions of children remain unvaccinated. The reasons are complex and vary from region to region, but certain patterns emerge again and again.</p>
+
+                <h3>Access and infrastructure</h3>
+
+                <p>In many low-income countries, the challenge is simply getting vaccines to the children who need them. Vaccines must be kept at precise temperatures from the moment they are manufactured until they are administered — a requirement known as the "cold chain." In places with unreliable electricity, poor roads or ongoing conflict, maintaining this cold chain is extraordinarily difficult. A single power outage, a broken refrigerator, or an impassable road can mean the difference between a child being immunized and a child being left unprotected.</p>
+
+                <p>UNICEF has invested heavily in strengthening cold chain infrastructure in the countries where it works. This includes procuring solar-powered refrigerators, training health workers in cold chain management, and deploying innovative technologies like vaccine vial monitors that change color if a vaccine has been exposed to excessive heat. These investments are paying off — vaccine wastage rates have dropped significantly in many of the countries where UNICEF operates, meaning more doses reach the children who need them.</p>
+
+                <h3>Conflict and displacement</h3>
+
+                <p>In countries affected by conflict, immunization systems often collapse entirely. Health workers flee, clinics are destroyed, and families are displaced to areas where they cannot access basic services. In these contexts, diseases that had been nearly eliminated can quickly re-emerge. Measles outbreaks, for example, have repeatedly swept through displaced populations in Syria, Yemen, the Democratic Republic of the Congo and elsewhere, killing children who had no chance of being vaccinated.</p>
+
+                <p>UNICEF responds to these challenges by working with partners to deliver vaccines in the hardest-to-reach areas. This often means negotiating humanitarian access with armed groups, setting up mobile vaccination teams that can reach families on the move, and coordinating campaigns during brief windows of relative calm. In some cases, this work involves significant personal risk for the health workers involved, but they do it because they know that without vaccines, children in these contexts have almost no chance of surviving to adulthood.</p>
+
+                <h3>Vaccine hesitancy</h3>
+
+                <p>Even where vaccines are available and infrastructure is strong, some parents choose not to vaccinate their children. This is a complex issue driven by many factors — misinformation, distrust of authorities, religious or cultural beliefs, or simple complacency about diseases that have become rare. Vaccine hesitancy was identified by the World Health Organization as one of the top ten threats to global health even before the COVID-19 pandemic, and the pandemic has only intensified the challenge.</p>
+
+                <p>UNICEF works to address hesitancy not through confrontation but through engagement. Community health workers, religious leaders and trusted local voices are enlisted to explain the benefits of vaccination and to address specific concerns. In many cases, the most effective approach is simply listening — understanding why a parent is hesitant and responding to their real worries with accurate information and empathy. Trust, once established, is the most powerful tool in any immunization programme.</p>
+
+                <h2>Innovation in immunization</h2>
+
+                <p>UNICEF is constantly looking for new ways to reach children with vaccines. Some of the most promising innovations of recent years include:</p>
+
+                <ul>
+                    <li><strong>Drone delivery</strong> — In several countries, UNICEF has partnered with governments and private companies to test the use of drones to deliver vaccines to remote communities. In Vanuatu and Ghana, drone-delivered vaccines have reached children in areas that would otherwise take hours or days to access by road.</li>
+                    <li><strong>Solar-powered cold chain</strong> — Solar direct-drive refrigerators require no batteries or grid electricity, making them ideal for use in off-grid health facilities. UNICEF has deployed hundreds of thousands of these refrigerators in the countries where it works.</li>
+                    <li><strong>Digital health records</strong> — Electronic immunization registries help health workers track which children have received which vaccines and remind families when the next dose is due. These systems dramatically improve coverage rates and reduce missed opportunities for vaccination.</li>
+                    <li><strong>Simplified vaccine schedules</strong> — New combination vaccines can protect against multiple diseases in a single shot, reducing the number of visits families need to make to health facilities and improving overall coverage.</li>
+                    <li><strong>Heat-stable vaccines</strong> — New formulations of certain vaccines can survive at higher temperatures for longer periods, reducing the strain on cold chain infrastructure and making it possible to reach children in even the most remote areas.</li>
+                </ul>
+
+                <h2>Working with partners</h2>
+
+                <p>UNICEF's immunization work is made possible through a broad coalition of partners. Gavi, the Vaccine Alliance, is the largest single partner, providing funding that allows UNICEF to purchase vaccines at negotiated prices. The World Health Organization provides technical guidance and helps set global standards. Governments in recipient countries implement the actual vaccination campaigns. Civil society organizations and community groups mobilize families. Private sector companies contribute logistics expertise and funding.</p>
+
+                <p>This partnership model is one of the great strengths of the global immunization effort. No single organization could accomplish what this coalition achieves together. By combining the strengths of different actors — procurement power, technical expertise, on-the-ground reach, and financial resources — the partnership delivers results that would be impossible for any one player alone.</p>
+
+                <h2>The COVID-19 pandemic and its aftermath</h2>
+
+                <p>The COVID-19 pandemic was the greatest shock to global immunization in a generation. As countries locked down to slow the spread of the virus, routine immunization services were disrupted across the world. In 2020 alone, an estimated 23 million children missed out on basic vaccines — the largest number in more than a decade. Many of these children live in countries where health systems were already fragile, and the disruption has been slow to reverse.</p>
+
+                <p>UNICEF played a central role in the global response to COVID-19, helping to deliver vaccines through the COVAX facility to more than 140 countries. At the same time, UNICEF worked to keep routine immunization going wherever possible, recognizing that deaths from preventable childhood diseases would not pause while the world focused on the pandemic. The lesson from COVID-19 is clear: immunization systems must be resilient enough to withstand future shocks, and they must be integrated with broader health systems so that a crisis in one area does not automatically lead to collapse in another.</p>
+
+                <h2>The road ahead</h2>
+
+                <p>The next decade presents both extraordinary opportunities and significant challenges for global immunization. On the opportunity side, new technologies, stronger partnerships and increased political commitment offer the possibility of reaching universal vaccine coverage — protecting every child, everywhere, against every preventable disease. On the challenge side, climate change, conflict, displacement and the ongoing fallout from COVID-19 all threaten to undermine progress.</p>
+
+                <p>UNICEF's goal is ambitious but achievable: to ensure that every child, no matter where they live, has access to the vaccines they need to survive and thrive. This is not just a health goal — it is a moral imperative. The tools exist. The knowledge exists. The partnerships exist. What is needed is the political will and the financial resources to finish the job.</p>
+
+                <p>Every child deserves to grow up protected from disease. Every parent deserves to know that their child will live past the age of five. Every community deserves the chance to thrive without the constant threat of preventable illness hanging over it. Vaccines make these things possible. It is up to all of us to make sure they reach the children who need them most.</p>
+
+                <p>The world has made extraordinary progress in immunization over the past 50 years. Millions of lives have been saved. Entire diseases have been eliminated. But the work is not done, and it will not be done until every child — in every country, in every community, in every family — has access to the protection that vaccines provide. That is UNICEF's mission, and it will not stop until that mission is fulfilled.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: CLIMATE ============================ -->
+    <div class="article-page" id="article-climate">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="CCRI_cm.jpg" alt="Child in a climate-affected landscape">
+            <div class="meta">Climate | June 2026</div>
+            <h1>Climate change is a child rights crisis</h1>
+            <div class="content">
+
+                <p>Climate change is not a distant threat. It is not a problem that will affect our grandchildren. It is here, now, and it is already reshaping the lives of children around the world. From extreme heat to floods, droughts, cyclones and rising seas, the impacts of a warming planet are hitting the youngest and most vulnerable hardest. UNICEF has called climate change a child rights crisis — and the description is not an exaggeration. It is a statement of fact grounded in overwhelming evidence.</p>
+
+                <p>The numbers are stark. Approximately 1 billion children — nearly half of all children on Earth — live in countries classified as being at "extremely high risk" from the impacts of climate change. That means their health, safety, education and futures are all threatened by a crisis they did not cause and cannot control. Children in the poorest countries, where emissions are lowest, face the greatest danger. This is not just an environmental problem — it is a profound injustice that demands urgent action.</p>
+
+                <h2>How climate change affects children</h2>
+
+                <p>The ways in which climate change harms children are as diverse as they are devastating. No single pathway captures the full picture, but several stand out as particularly urgent.</p>
+
+                <h3>Health and survival</h3>
+
+                <p>Extreme heat is one of the most direct threats to child health. Children's bodies heat up faster than adults' and cool down more slowly, making them especially vulnerable to heat stress, dehydration and heat-related illness. In 2023, UNICEF estimated that more than 2 billion children were exposed to at least one heatwave — a number that is only growing as global temperatures rise. For newborns and infants, exposure to extreme heat can be deadly. For older children, heat affects their ability to learn, play and sleep, undermining both their physical and cognitive development.</p>
+
+                <p>Climate change is also expanding the range of many infectious diseases. Malaria, dengue fever, cholera and other climate-sensitive diseases are spreading into areas that were previously too cool or dry for them. Children's immune systems are less developed than adults', making them particularly susceptible. A child in a malaria-endemic area who is also exposed to extreme weather events may face repeated infections, malnutrition and educational disruption — a compounding of risks that can permanently alter their life trajectory.</p>
+
+                <p>Air pollution, much of it linked to the burning of fossil fuels, is another major threat. More than 90% of children worldwide breathe air that fails to meet WHO air quality standards. Air pollution is linked to asthma, pneumonia, stunted lung development and premature death. The same fossil fuels driving climate change are also directly poisoning the air that children breathe.</p>
+
+                <h3>Water and food security</h3>
+
+                <p>Climate change disrupts water supplies in many ways. Droughts dry up wells and rivers. Floods contaminate drinking water sources with sewage and agricultural runoff. Rising sea levels push salt water into freshwater aquifers. All of these changes make it harder for families to access clean water — and children are usually the ones sent to fetch it, often walking long distances and missing school as a result.</p>
+
+                <p>Food security is also under threat. Climate-related shocks — droughts, floods, storms — destroy crops and livestock, pushing families into hunger and malnutrition. Children are especially vulnerable: the first 1,000 days of life, from conception to age two, are critical for physical and cognitive development, and malnutrition during this window can cause permanent damage. UNICEF estimates that climate change could push an additional 10 million children into acute malnutrition by 2050 unless urgent action is taken.</p>
+
+                <h3>Displacement and migration</h3>
+
+                <p>When climate-related disasters strike, families are often forced to leave their homes. In 2023 alone, disasters displaced nearly 27 million people — the vast majority of them in countries that are already fragile. Children make up a significant proportion of these displaced populations, and displacement brings with it a host of risks: separation from family, interruption of education, exposure to exploitation and abuse, and the loss of community and identity.</p>
+
+                <p>Slower-onset climate changes, such as desertification and sea level rise, are also driving migration. Whole communities in low-lying coastal areas and small island states are facing the prospect of being permanently displaced. For children growing up in these communities, the loss of their homeland is not just a physical displacement but a profound rupture in their sense of who they are and where they belong.</p>
+
+                <h3>Education</h3>
+
+                <p>Climate change disrupts education in multiple ways. Schools are destroyed by storms and floods. Extreme heat makes classrooms unbearable and impairs learning. Children are pulled out of school to help their families cope with climate-related shocks. Girls in particular are often the first to be withdrawn from school when families face economic stress, deepening existing gender inequalities.</p>
+
+                <p>UNICEF estimates that climate change is already causing millions of children to miss school every year. In some regions, this is measured in weeks or months of lost learning per child. The long-term consequences — reduced literacy, lower earnings, diminished civic participation — are profound, and they will be felt for generations.</p>
+
+                <h2>The children on the front lines</h2>
+
+                <p>Some children are more exposed to climate risks than others. Those living in low-income countries, in rural areas, in coastal zones, in drylands, or in informal urban settlements face the greatest danger. So do children who are already marginalized — those with disabilities, those from minority communities, those who are refugees or internally displaced, and those living in conflict-affected areas.</p>
+
+                <p>In the Horn of Africa, children have lived through five consecutive failed rainy seasons, the worst drought in 40 years. Millions have been pushed into acute food insecurity, and hundreds of thousands are at risk of dying from hunger-related causes. In Pakistan, catastrophic floods in 2022 submerged a third of the country, affecting 33 million people — half of them children. In the Pacific islands, children grow up knowing that their homeland may become uninhabitable within their lifetimes. In the Sahel, desertification is turning once-fertile land into dust, driving conflict over dwindling resources.</p>
+
+                <p>These are not isolated events. They are interconnected manifestations of a single global crisis, and they are all disproportionately affecting children.</p>
+
+                <h2>What UNICEF is doing</h2>
+
+                <p>UNICEF's response to climate change is built on the recognition that children are both the most affected by climate impacts and the most powerful agents of change. The organization's work focuses on four main areas: adaptation, mitigation, advocacy and youth engagement.</p>
+
+                <h3>Adaptation</h3>
+
+                <p>Adaptation means helping communities prepare for and cope with the climate impacts that are already here or are now unavoidable. UNICEF supports adaptation in many ways: building climate-resilient water and sanitation systems, promoting climate-smart agriculture, strengthening early warning systems, and helping schools and health facilities become more resilient to extreme weather.</p>
+
+                <p>Adaptation also involves working at the community level to build local capacity. UNICEF trains local health workers, teachers and community leaders to recognize and respond to climate-related risks. It supports community-based disaster preparedness, ensuring that families know what to do when a storm or flood is coming. And it works to integrate climate considerations into all aspects of humanitarian and development programming, so that resilience is built into everything UNICEF does.</p>
+
+                <h3>Mitigation</h3>
+
+                <p>Mitigation means reducing greenhouse gas emissions to limit the scale of future climate change. UNICEF's mitigation work focuses primarily on the sectors that most directly affect children — energy, transport, and food systems. The organization advocates for a rapid transition away from fossil fuels, supports renewable energy deployment in the countries where it works, and promotes sustainable and equitable food systems that are both lower in emissions and better for children's nutrition.</p>
+
+                <p>UNICEF also works to reduce its own environmental footprint. The organization has committed to ambitious emissions reduction targets and is working to decarbonize its supply chain, facilities and operations. This is not just a matter of principle — it is a way of modeling the kind of leadership that is needed from all institutions in the fight against climate change.</p>
+
+                <h3>Advocacy</h3>
+
+                <p>UNICEF's advocacy work aims to put children at the center of climate policy. The organization calls on governments to commit to ambitious emissions reductions, to invest in adaptation and resilience, and to ensure that children's needs and rights are reflected in all climate decisions. At international climate negotiations, UNICEF has consistently pressed for stronger action and for recognition of children as a priority group.</p>
+
+                <p>UNICEF also works to hold governments and corporations accountable for their climate commitments. Through reports, research and public campaigns, the organization shines a light on the gap between promises and action, and pushes for the systemic changes that are needed to protect children's futures.</p>
+
+                <h3>Youth engagement</h3>
+
+                <p>Children and young people are not just victims of climate change — they are also powerful advocates and change-makers. UNICEF supports youth climate activism in many ways, from providing platforms for young voices to be heard, to funding youth-led climate initiatives, to ensuring that young people are included in decision-making processes at all levels.</p>
+
+                <p>UNICEF believes that children's participation is not optional — it is essential. Young people have the most at stake in the climate crisis, and they bring energy, creativity and moral clarity that is often missing from adult-dominated debates. By amplifying youth voices and supporting youth-led action, UNICEF is helping to build a movement that will carry the fight for climate justice forward for decades to come.</p>
+
+                <h2>What needs to change</h2>
+
+                <p>The scale of the challenge demands action at every level. Governments must commit to much more ambitious emissions reductions, in line with the Paris Agreement's goal of limiting warming to 1.5 degrees Celsius. Wealthy countries must deliver on their promises to provide climate finance to developing countries. International institutions must integrate children's rights into all climate policies and programs. And every one of us — as citizens, consumers, voters and advocates — must use our voice and our choices to push for the changes that are needed.</p>
+
+                <p>Climate change is often framed as a future problem, something that will affect us "in 2050" or "by the end of the century." But for children living on the front lines today, climate change is already a present and devastating reality. They are already experiencing the floods, the droughts, the heatwaves, the hunger, the displacement. And they are already paying a price that they did nothing to incur.</p>
+
+                <p>UNICEF's message is simple and urgent: the climate crisis is a child rights crisis. Protecting children means protecting the planet. And protecting the planet means acting now, with the urgency and ambition that the moment demands. There is no time to waste.</p>
+
+                <p>Every child on Earth deserves a safe, healthy and hopeful future. Climate change threatens that future in ways that are unprecedented in human history. But it is not too late to change course. The solutions exist. The technologies exist. The knowledge exists. What is needed is the collective will to act — and to act now, before the window of opportunity closes forever.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: GAZA ============================ -->
+    <div class="article-page" id="article-gaza">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="UNI820856.jpg" alt="Children in Gaza">
+            <div class="meta">Emergency Appeal | August 2026</div>
+            <h1>Gaza: children need urgent humanitarian support</h1>
+            <div class="content">
+
+                <p>The situation for children in Gaza is catastrophic. After months of intense conflict, the entire population — more than 2 million people, half of them children — is in need of humanitarian assistance. Families are living in ruins, without access to clean water, adequate food, medical care or safe shelter. The scale of the crisis is unprecedented, and children are bearing the heaviest burden.</p>
+
+                <p>UNICEF has described Gaza as one of the most dangerous places in the world to be a child. The numbers tell a story of almost unimaginable suffering. Thousands of children have been killed. Thousands more have been injured, many with life-changing disabilities. Nearly every child in Gaza has been displaced from their home, often multiple times, and many are now living in overcrowded shelters, makeshift tents or the rubble of destroyed buildings. The psychological toll is immeasurable — a generation of children is growing up surrounded by violence, loss and fear.</p>
+
+                <h2>A humanitarian catastrophe</h2>
+
+                <p>The humanitarian situation in Gaza has deteriorated to the point where basic survival is a daily struggle for millions of people. Food is scarce, and malnutrition is widespread. Water supplies have been severely disrupted, and what water is available is often contaminated. Health facilities have been overwhelmed, with many hospitals no longer functioning. Schools have been destroyed or turned into shelters, and education has been suspended for most children.</p>
+
+                <p>The impact on children's physical health is severe. Malnutrition weakens their immune systems, making them more vulnerable to disease. Lack of clean water and sanitation is fueling outbreaks of diarrheal diseases, which can be fatal for young children. Injuries from explosions require urgent medical care, but the health system is unable to cope. Every day, children are dying from causes that are entirely preventable — causes that would not exist if they had access to adequate food, water, medicine and safety.</p>
+
+                <p>The psychological impact is equally severe and will be felt for decades. Children in Gaza have witnessed things no child should ever have to see: the deaths of family members, the destruction of their homes, the constant threat of violence. Many have been separated from their parents or caregivers. Many have lost everything they owned. The trauma they are experiencing will shape their mental health, their development and their future in ways that are difficult to fully comprehend.</p>
+
+                <h2>UNICEF's response</h2>
+
+                <p>Despite extraordinary challenges, UNICEF and its partners continue to deliver life-saving assistance to children in Gaza. The work is dangerous, difficult and constantly interrupted by the ongoing conflict, but the commitment to reaching children in need remains absolute.</p>
+
+                <h3>Water and sanitation</h3>
+
+                <p>UNICEF is working to restore and maintain access to clean water for families in Gaza. This includes repairing damaged water infrastructure, trucking in water where pipelines are no longer functioning, and distributing water containers and hygiene kits. UNICEF is also supporting the operation of desalination plants and providing fuel to keep them running. Safe water is one of the most urgent needs, and UNICEF is prioritizing it above almost everything else.</p>
+
+                <h3>Nutrition</h3>
+
+                <p>Malnutrition is a growing crisis in Gaza, and UNICEF is responding with urgent nutritional support. This includes distributing ready-to-use therapeutic food for severely malnourished children, providing micronutrient supplements, and supporting breastfeeding mothers. UNICEF is also working to screen children for malnutrition so that those most at risk can be identified and treated quickly.</p>
+
+                <h3>Health</h3>
+
+                <p>UNICEF is supporting the delivery of essential health services in Gaza, including through the provision of medicines, medical supplies and equipment. The organization is also supporting mobile health teams that can reach families in areas where hospitals are no longer functioning. Vaccination campaigns are ongoing, despite the enormous difficulties, to prevent outbreaks of preventable diseases that would be devastating in the current conditions.</p>
+
+                <h3>Mental health and psychosocial support</h3>
+
+                <p>The psychological toll on children in Gaza is one of the most urgent aspects of the crisis. UNICEF is providing mental health and psychosocial support through trained counselors, child-friendly spaces and community-based programmes. This includes helping children process their experiences, providing opportunities for play and recreation, and supporting parents and caregivers who are themselves deeply traumatized. The goal is to help children begin to heal, even as the crisis continues.</p>
+
+                <h3>Education</h3>
+
+                <p>Education has been almost entirely suspended in Gaza, but UNICEF is working to provide learning opportunities wherever possible. This includes supporting temporary learning spaces, distributing educational materials, and using digital platforms to reach children who cannot attend school in person. Education is a lifeline for children in crisis, and UNICEF is committed to ensuring that as many children as possible can continue to learn.</p>
+
+                <h3>Child protection</h3>
+
+                <p>Children in Gaza face multiple protection risks, including separation from family, exploitation, abuse and recruitment by armed groups. UNICEF is working to identify and support unaccompanied and separated children, provide case management for children at risk, and promote the principles of child protection in all aspects of the humanitarian response. The organization is also advocating strongly for the protection of children under international humanitarian law.</p>
+
+                <h2>The need for a ceasefire</h2>
+
+                <p>UNICEF has repeatedly and urgently called for an immediate and lasting ceasefire in Gaza. Without a ceasefire, humanitarian access remains limited, and the delivery of aid is constantly interrupted. Without a ceasefire, families cannot access the services they need, and children cannot be kept safe. Without a ceasefire, the humanitarian response will remain insufficient to meet the scale of the needs.</p>
+
+                <p>A ceasefire is not a political statement. It is a humanitarian imperative. Children in Gaza cannot wait. Every day that the fighting continues, more children are killed, injured, orphaned, traumatized and pushed further into hunger, disease and despair. The international community has a responsibility to act — to demand a ceasefire, to ensure unimpeded humanitarian access, and to protect the children of Gaza.</p>
+
+                <h2>What children in Gaza need</h2>
+
+                <p>The needs are staggering, but they are clear. Children in Gaza need:</p>
+
+                <ul>
+                    <li><strong>Safety</strong> — an end to the violence that is killing and injuring them every day.</li>
+                    <li><strong>Food</strong> — enough nutritious food to prevent malnutrition and allow them to grow.</li>
+                    <li><strong>Water</strong> — clean, safe water to drink, cook with and wash with.</li>
+                    <li><strong>Healthcare</strong> — access to medical care when they are sick or injured.</li>
+                    <li><strong>Shelter</strong> — a safe place to sleep, protected from the elements and from violence.</li>
+                    <li><strong>Education</strong> — the opportunity to learn and to build a future.</li>
+                    <li><strong>Psychosocial support</strong> — help to process the trauma they have experienced.</li>
+                    <li><strong>Family</strong> — to be with the people who love them and who can care for them.</li>
+                    <li><strong>Hope</strong> — a reason to believe that their future can be better than their present.</li>
+                </ul>
+
+                <h2>How you can help</h2>
+
+                <p>UNICEF is working around the clock to reach children in Gaza with the support they need. But the scale of the crisis is far greater than the resources currently available. Additional funding is urgently needed to expand the humanitarian response and to reach more children with life-saving assistance.</p>
+
+                <p>Donations to UNICEF's emergency appeal for Gaza will support the delivery of water, food, medicine, shelter, education and psychosocial support to children and families in need. Every contribution, no matter how small, makes a difference. Together, we can provide children in Gaza with the support they need to survive this crisis and to begin to rebuild their lives.</p>
+
+                <h2>A call to action</h2>
+
+                <p>The crisis in Gaza is one of the most severe humanitarian emergencies in the world today. Children are dying from causes that could be prevented. They are being denied the basic necessities of life. They are being robbed of their childhoods, their education and their futures. This is not acceptable. It is not inevitable. And it must not be allowed to continue.</p>
+
+                <p>UNICEF calls on all parties to the conflict to protect children, to respect international humanitarian law, and to allow unimpeded humanitarian access. We call on the international community to demand a ceasefire and to provide the resources needed to mount an effective humanitarian response. And we call on people everywhere to stand with the children of Gaza — to speak up for them, to support them, and to insist that their rights be respected and their lives protected.</p>
+
+                <p>Children in Gaza deserve more than survival. They deserve safety, dignity, education, health and hope. They deserve to be children. And they deserve a future. UNICEF will continue to work — as long as it takes — to help them achieve that future. But we cannot do it alone. We need the world to stand with us, and with them.</p>
+
+                <p>The children of Gaza are not numbers. They are not statistics. They are children — with names, with dreams, with futures that should be full of possibility. They have endured things that no child should ever have to endure. And they continue to show extraordinary resilience, courage and hope in the face of unimaginable adversity. They are the reason UNICEF will never stop working. They are the reason we will never give up.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: UKRAINE ============================ -->
+    <div class="article-page" id="article-ukraine">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="UNI655464.jpg" alt="Children in Ukraine">
+            <div class="meta">Conflict | July 2026</div>
+            <h1>Ukraine: protecting children's future amid war</h1>
+            <div class="content">
+
+                <p>The war in Ukraine has caused the largest displacement of children in Europe since World War II. More than 3 million children have been forced to flee their homes, and millions more remain in areas affected by the fighting. Schools have been destroyed, hospitals have been damaged, and families have been torn apart. For the children of Ukraine, the war has brought a level of disruption, fear and loss that no child should ever have to experience.</p>
+
+                <p>Yet amid the horror, something remarkable is also happening. Ukrainian children are showing extraordinary resilience. Their parents, teachers and communities are working around the clock to protect them, to keep them learning, to help them heal. And UNICEF, alongside its partners, is supporting these efforts — providing the resources, expertise and global advocacy needed to ensure that Ukraine's children are not forgotten.</p>
+
+                <h2>The impact on children</h2>
+
+                <p>The war has touched every aspect of children's lives in Ukraine. The physical destruction of homes, schools and hospitals has been extensive. Hundreds of educational institutions have been damaged or destroyed. Health facilities have been targeted or have had to close because of security concerns. Water and sanitation infrastructure has been damaged, leaving families without access to basic services.</p>
+
+                <p>The psychological impact is equally severe. Children have been exposed to the sounds and sights of war — explosions, gunfire, the destruction of buildings and the deaths of people they know. Many have been forced to flee with only a few minutes' notice, leaving behind their belongings, their friends, their pets and their sense of normalcy. Many have been separated from their fathers, who have stayed behind to fight. Many have lost loved ones.</p>
+
+                <p>The disruption to education has been profound. Since the start of the war, schools across Ukraine have repeatedly been forced to close, reopen and close again, depending on the security situation. Online learning has been used as a substitute, but it is not a complete replacement — many children lack reliable internet access, and screen-based learning cannot fully substitute for the classroom. For the youngest children, the loss of opportunities to play with friends and to develop social skills is a serious concern.</p>
+
+                <h2>UNICEF's response in Ukraine</h2>
+
+                <p>UNICEF has been present in Ukraine for decades, and since the escalation of the war in 2022, it has significantly scaled up its operations. The organization's response focuses on the areas where children's needs are most acute: protection, education, health, water and sanitation, and mental health and psychosocial support.</p>
+
+                <h3>Child protection</h3>
+
+                <p>UNICEF is working to identify and support the children most at risk — those who are unaccompanied, separated from their families, or living in areas directly affected by the fighting. The organization supports safe spaces for children, case management services, and family tracing and reunification. It also works to prevent and respond to violence, abuse and exploitation, which are all heightened risks in conflict settings.</p>
+
+                <p>Child protection also involves advocacy. UNICEF works with the Ukrainian government and international partners to strengthen legal protections for children, to ensure that child rights are respected even in the midst of war, and to hold perpetrators of crimes against children accountable.</p>
+
+                <h3>Education</h3>
+
+                <p>UNICEF is supporting education in Ukraine in many ways. This includes helping to repair damaged schools, providing learning materials to children, supporting teacher training and paying teacher salaries where necessary, and supporting online and distance learning platforms. The organization is also supporting the "Ukrainian Bookshelf" project, which provides Ukrainian-language books to children who have been displaced to other countries, helping them maintain a connection to their culture and language.</p>
+
+                <p>Beyond Ukraine itself, UNICEF has worked with host countries to ensure that Ukrainian refugee children can continue their education. In Poland, Romania, Moldova and other countries, UNICEF has supported efforts to integrate Ukrainian children into local school systems, to provide Ukrainian-language instruction where possible, and to address the specific challenges that refugee children face.</p>
+
+                <h3>Health</h3>
+
+                <p>UNICEF is providing medical supplies and equipment to hospitals and clinics across Ukraine, supporting the delivery of essential health services, and helping to rebuild damaged health infrastructure. The organization is also supporting vaccination campaigns, including catch-up campaigns for children who have missed routine immunizations because of the war.</p>
+
+                <p>Mobile health teams are a critical part of the response, reaching children and families in areas that are too dangerous or too remote for static health facilities to serve. These teams provide a range of services, from basic primary care to vaccination to mental health support.</p>
+
+                <h3>Water, sanitation and hygiene</h3>
+
+                <p>Access to clean water is a critical need in any conflict setting, and Ukraine is no exception. UNICEF is supporting the repair of damaged water infrastructure, providing water treatment supplies, and distributing hygiene kits to families. The organization is also working to ensure that water and sanitation services in schools and health facilities are restored as quickly as possible.</p>
+
+                <h3>Mental health and psychosocial support</h3>
+
+                <p>The psychological toll of the war on Ukraine's children is enormous, and UNICEF has made mental health and psychosocial support a top priority. The organization is supporting the training of teachers, health workers and social workers in how to provide psychological first aid and how to recognize the signs of trauma that require more specialized care.</p>
+
+                <p>UNICEF is also supporting the creation of child-friendly spaces where children can play, learn and interact with their peers in a safe environment. These spaces provide a sense of normalcy that is essential for children's wellbeing, and they offer an opportunity for children to begin processing the difficult experiences they have been through.</p>
+
+                <h2>Refugee children in neighboring countries</h2>
+
+                <p>Millions of Ukrainian children have fled to neighboring countries since the start of the war. UNICEF is working in these countries — including Poland, Romania, Moldova, Hungary and Slovakia — to support the refugee children and their families. This work includes providing education, mental health support, protection services and essential supplies.</p>
+
+                <p>Refugee children face a specific set of challenges. They must adjust to a new country, often a new language, and sometimes a new school system. They may have experienced traumatic events during their flight. They may be separated from their fathers or other family members. They may face discrimination or exploitation. UNICEF is working to address all of these risks and to ensure that refugee children have access to the services and support they need.</p>
+
+                <h2>Supporting Ukraine's recovery and reconstruction</h2>
+
+                <p>Even as the war continues, UNICEF is already planning for Ukraine's recovery and reconstruction. The organization is working with the Ukrainian government and international partners to ensure that the rebuilding process prioritizes the needs of children — that schools and health facilities are rebuilt to be safer, more accessible and more resilient; that child protection systems are strengthened; that education reforms continue; and that children's voices are heard in decisions about their future.</p>
+
+                <p>This forward-looking work is essential. The war will end, and when it does, Ukraine will need to rebuild — not just its physical infrastructure, but also its social fabric, its institutions and its people. Investing in children now is the best possible preparation for that future. It is also, in a profound sense, an act of faith in the future of Ukraine itself.</p>
+
+                <h2>The challenges ahead</h2>
+
+                <p>The challenges facing Ukraine's children are enormous, and they are not going to disappear overnight. The war continues, and with it the violence, displacement, disruption and trauma that are affecting millions of children. Even after the war ends, the impact will be felt for decades. Children who have lost years of education will need to catch up. Children who have experienced trauma will need long-term support. Families that have been separated will need to reunite. Communities that have been destroyed will need to rebuild.</p>
+
+                <p>UNICEF is committed to standing with Ukraine's children for as long as it takes. The organization's presence in Ukraine dates back decades, and its commitment to the country's children is unwavering. The work will continue — through the war, through the recovery, and into whatever future Ukraine's children are able to build.</p>
+
+                <h2>How you can help</h2>
+
+                <p>There are many ways to support Ukraine's children. Donations to UNICEF's emergency appeal for Ukraine will support the delivery of essential services — education, healthcare, protection, water, sanitation and mental health support — to children and families affected by the war. Advocacy matters too: speaking up about the situation in Ukraine, calling for the protection of children, and demanding that the international community continue to support the humanitarian response.</p>
+
+                <p>But perhaps the most important thing any of us can do is to remember. To remember that behind every statistic, every headline, every news report, there are real children — with real names, real hopes, real futures. Children whose lives have been upended by a war they did not choose and cannot control. Children who deserve the chance to grow up in peace, to learn, to play, to dream.</p>
+
+                <p>The children of Ukraine are not just the future of their country — they are the future of our shared world. Protecting them is not just a humanitarian obligation; it is an investment in a better, more peaceful, more just world for us all. UNICEF will continue to do its part. But we need everyone — governments, donors, communities and individuals — to do theirs. Together, we can protect Ukraine's children and give them the future they deserve.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ ARTICLE: CLIMATE RESILIENCE ============================ -->
+    <div class="article-page" id="article-climate-resilience">
+        <div class="container">
+            <span class="back-link" onclick="showHome()">← Back to home</span>
+            <img class="article-img" src="uni666034_0.jpg" alt="Community building climate resilience">
+            <div class="meta">Climate | June 2026</div>
+            <h1>Building resilience for tomorrow</h1>
+            <div class="content">
+
+                <p>Climate change is not a future problem — it is happening now, and its impacts are already reshaping the lives of children in every corner of the world. Droughts, floods, heatwaves, storms and sea-level rise are destroying homes, disrupting education, undermining health and pushing families into poverty. The children who are most affected are often those who contributed least to the crisis — children in low-income countries, children in rural areas, children from marginalized communities. Ensuring their resilience is one of the most urgent tasks facing the world today.</p>
+
+                <p>Resilience is not a single thing. It is not just about building stronger walls or higher embankments. It is about creating communities that can anticipate climate risks, prepare for them, cope with them when they arrive, and recover quickly when they pass. It is about ensuring that children have what they need — physically, emotionally, socially and economically — to thrive despite the challenges they face. And it is about investing in systems, infrastructure and people so that future generations are better equipped to handle whatever climate change brings.</p>
+
+                <h2>Why resilience matters for children</h2>
+
+                <p>Children are not just small adults. Their bodies, brains and immune systems are still developing, which makes them especially vulnerable to climate-related shocks. A child who experiences malnutrition during the critical first 1,000 days of life may suffer permanent physical and cognitive consequences. A child whose education is interrupted by a disaster may fall permanently behind. A child who is exposed to trauma may carry the scars for a lifetime.</p>
+
+                <p>But children are also remarkably resilient. Given the right conditions — safety, nutrition, education, love, community — children can bounce back from even the most difficult experiences. The task of building climate resilience for children is not about protecting them from every challenge — that is impossible. It is about giving them the tools, resources and support they need to face those challenges and emerge stronger.</p>
+
+                <p>Resilience also matters for the long game. Children who grow up in climate-resilient communities are more likely to become adults who can adapt to changing conditions, who can innovate in the face of adversity, and who can lead their communities into a more sustainable future. Investing in children's resilience today is an investment in the resilience of entire societies for generations to come.</p>
+
+                <h2>What resilience looks like in practice</h2>
+
+                <p>Resilience takes many forms, depending on the specific risks and context. In a drought-prone region, it might mean water harvesting systems, drought-resistant crops and community-based water management. In a flood-prone area, it might mean early warning systems, elevated infrastructure and evacuation plans. In a coastal community threatened by sea-level rise, it might mean mangrove restoration, salt-tolerant agriculture and planned relocation. In an urban slum vulnerable to heatwaves, it might mean green spaces, cool roofs and improved access to water and electricity.</p>
+
+                <p>But whatever the specific form, effective resilience-building shares certain common features. It is community-led — designed and implemented by the people who live in the community, not imposed from outside. It is integrated — addressing multiple risks and vulnerabilities at once, rather than focusing on a single hazard. It is inclusive — ensuring that the most vulnerable groups, including children, are actively involved in planning and decision-making. And it is sustained — supported by policies, institutions and financing that will endure beyond the lifetime of any single project.</p>
+
+                <h2>UNICEF's approach to climate resilience</h2>
+
+                <p>UNICEF's work on climate resilience is grounded in the recognition that children are both the most affected by climate change and the most powerful agents of change. The organization's approach focuses on four key areas.</p>
+
+                <h3>Protecting children's health and nutrition</h3>
+
+                <p>Climate change is already having profound impacts on children's health and nutrition. UNICEF works to strengthen health systems so that they can continue to function during and after climate shocks. This includes supporting the construction of climate-resilient health facilities, training health workers in climate-sensitive disease surveillance, and ensuring that essential medicines and supplies are available when they are needed.</p>
+
+                <p>On nutrition, UNICEF supports programmes that build the resilience of food systems — promoting climate-smart agriculture, supporting local food production, and providing nutritional support to children and families in need. The organization also works to strengthen social protection systems so that families can access the resources they need to cope with climate-related shocks.</p>
+
+                <h3>Ensuring education continues</h3>
+
+                <p>Education is one of the most powerful tools for building resilience — for individuals, for communities, for entire societies. UNICEF works to ensure that education continues even when climate shocks disrupt the normal functioning of schools. This includes supporting distance learning, rehabilitating damaged schools, and building the capacity of education systems to respond to emergencies.</p>
+
+                <p>UNICEF also works to integrate climate education into school curricula, so that children understand the climate risks they face and are equipped with the knowledge and skills to respond. From understanding local weather patterns to learning about sustainable agriculture to developing early warning systems, climate education is a critical component of any resilience-building strategy.</p>
+
+                <h3>Strengthening water and sanitation systems</h3>
+
+                <p>Water and sanitation are essential for children's survival and development, and they are also among the most climate-sensitive services. UNICEF works to build water and sanitation systems that can withstand climate shocks — from solar-powered water pumps to rainwater harvesting to flood-resistant latrines. The organization also supports water resource management at the community level, helping communities to plan for and manage the water resources they depend on.</p>
+
+                <h3>Supporting child protection</h3>
+
+                <p>Climate change increases the risks that children face — from violence, exploitation, abuse and neglect to displacement, separation from family and loss of education. UNICEF works to strengthen child protection systems so that they can continue to function during and after climate shocks. This includes training social workers in climate-sensitive child protection, supporting community-based child protection mechanisms, and ensuring that child protection is integrated into all aspects of disaster preparedness and response.</p>
+
+                <h2>The role of communities</h2>
+
+                <p>Climate resilience cannot be built from the top down. It must be rooted in communities — in the knowledge, skills, networks and resources that exist within them. UNICEF's approach is to work alongside communities, supporting their own efforts to build resilience rather than imposing solutions from outside.</p>
+
+                <p>Community-led resilience takes many forms. In some places, it means supporting traditional knowledge — for example, the agricultural practices that communities have developed over generations to cope with variable rainfall. In others, it means helping communities to access new technologies or information that can help them adapt to changing conditions. In all cases, it means listening to communities, respecting their priorities and ensuring that they are in the driver's seat when it comes to decisions about their own futures.</p>
+
+                <p>Children and young people have a particularly important role to play in community resilience. They bring energy, creativity and a fresh perspective. They are often more willing to embrace new ideas and technologies. And they have the strongest stake in the future — they will live with the consequences of the decisions we make today. UNICEF supports youth-led climate action in many ways, from providing funding and technical support to amplifying young voices in decision-making processes.</p>
+
+                <h2>Financing resilience</h2>
+
+                <p>Building climate resilience requires significant investment — in infrastructure, in systems, in people. But the cost of inaction is far greater. Every dollar spent on resilience saves many times that amount in avoided losses and reduced humanitarian needs. The evidence on this is overwhelming, and yet global investment in resilience remains far below what is needed.</p>
+
+                <p>UNICEF is calling for a massive scale-up of investment in climate resilience, particularly for the countries and communities that are most vulnerable. This includes increased funding from wealthy countries to support adaptation in developing countries, reform of international financial institutions to make them more responsive to climate risks, and innovative financing mechanisms that can mobilize private capital for resilience-building.</p>
+
+                <p>UNICEF also believes that financing for resilience must be child-sensitive. Children's specific needs and vulnerabilities must be at the center of any resilience investment strategy. This means prioritizing investments in the services and systems that children depend on — health, education, water, sanitation, protection — and ensuring that children are included in decisions about how resources are allocated.</p>
+
+                <h2>Lessons from the field</h2>
+
+                <p>UNICEF's resilience work around the world has generated valuable lessons about what works and what doesn't.</p>
+
+                <p>First, resilience is context-specific. There is no single model that can be applied everywhere. What works in a drought-prone village in the Sahel may not work in a flood-prone city in Southeast Asia. Effective resilience-building must be tailored to local conditions, priorities and capacities.</p>
+
+                <p>Second, resilience takes time. Building resilience is a long-term process that requires sustained investment and commitment. It is not something that can be achieved in a single project cycle or a single political term. It requires patience, persistence and a long-term perspective.</p>
+
+                <p>Third, resilience requires partnerships. No single organization — not UNICEF, not any government, not any community — can build resilience alone. Effective resilience-building requires collaboration across sectors, across levels of government, across organizations and across communities.</p>
+
+                <p>Fourth, resilience must be inclusive. The most vulnerable children — those with disabilities, those from marginalized communities, those who are displaced — are often the most affected by climate change and the least likely to benefit from resilience investments. Effective resilience-building must actively include these children, ensuring that no one is left behind.</p>
+
+                <p>Fifth, resilience is not just about coping — it is also about transforming. Climate change is not just a challenge to be managed; it is an opportunity to build a more just, more sustainable, more equitable world. Resilience-building is an opportunity to address the underlying drivers of vulnerability — poverty, inequality, discrimination — and to build systems that work for all children, not just the most privileged.</p>
+
+                <h2>The road ahead</h2>
+
+                <p>The climate crisis is the defining challenge of our time. It threatens the health, safety, education and futures of children everywhere. But it is not inevitable, and it is not insurmountable. If we act now — with ambition, with urgency, with commitment — we can build a world in which children are protected from the worst impacts of climate change and equipped to thrive in a changing world.</p>
+
+                <p>UNICEF is committed to doing its part. The organization will continue to work alongside communities, governments and partners to build resilience for children — in the countries and communities where the need is greatest, and in the ways that are most effective. But UNICEF cannot do it alone. Building resilience requires all of us — every government, every institution, every community, every individual — to step up and do our part.</p>
+
+                <p>The children of today are the adults of tomorrow. They will inherit the world we leave them — a world shaped by the decisions we make now. Let us decide, together, to leave them a world that is safe, sustainable and full of possibility. A world in which every child, no matter where they live or what they face, has the chance to grow up healthy, educated, protected and hopeful. A world of resilience, for every child.</p>
+
+                <p>The work is urgent. The time is now. And the children of the world are counting on us.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================ DONATION PAGE ============================ -->
     <div class="donation-page" id="donation-page">
         <div class="container">
             <span class="back-link" onclick="showHome()">← Back to home</span>
@@ -521,12 +1070,8 @@
     <script>
         const SUPABASE_PROJECT_URL = 'https://iiceaseqdzcdfgkiinnx.supabase.co';
         const EDGE_FUNCTION_NAME = 'donation-processor';
-
         console.log('🚀 Script loaded');
-
         const $ = id => document.getElementById(id);
-
-        // Lazy Stripe state
         let stripe = null;
         let elements = null;
         let paymentElement = null;
@@ -534,43 +1079,25 @@
 
         function getStripe() {
             if (stripe) return stripe;
-            if (typeof Stripe === 'undefined') {
-                throw new Error('Payment system failed to load. Please disable any ad blocker and refresh the page.');
-            }
+            if (typeof Stripe === 'undefined') throw new Error('Payment system failed to load. Please disable any ad blocker and refresh the page.');
             stripe = Stripe('pk_live_Z3DOEXDkQ29anfNUNNsk2XNb');
             return stripe;
         }
-
         function showToast(msg, duration = 3000) {
-            const toast = $('toast');
-            if (!toast) return;
-            toast.textContent = msg;
-            toast.classList.add('show');
-            clearTimeout(toast._timer);
-            toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
+            const toast = $('toast'); if (!toast) return;
+            toast.textContent = msg; toast.classList.add('show');
+            clearTimeout(toast._timer); toast._timer = setTimeout(() => toast.classList.remove('show'), duration);
         }
-
         function showLoading() { const el = $('loadingOverlay'); if (el) el.classList.add('show'); }
         function hideLoading() { const el = $('loadingOverlay'); if (el) el.classList.remove('show'); }
-
         function toggleMobileMenu() {
-            const menu = $('mobileMenu');
-            const overlay = $('mobileOverlay');
-            const hamburger = $('hamburger');
-            if (menu) menu.classList.toggle('open');
-            if (overlay) overlay.classList.toggle('open');
-            if (hamburger) hamburger.classList.toggle('active');
+            const menu = $('mobileMenu'), overlay = $('mobileOverlay'), hamburger = $('hamburger');
+            if (menu) menu.classList.toggle('open'); if (overlay) overlay.classList.toggle('open'); if (hamburger) hamburger.classList.toggle('active');
         }
-
         function closeMobileMenu() {
-            const menu = $('mobileMenu');
-            const overlay = $('mobileOverlay');
-            const hamburger = $('hamburger');
-            if (menu) menu.classList.remove('open');
-            if (overlay) overlay.classList.remove('open');
-            if (hamburger) hamburger.classList.remove('active');
+            const menu = $('mobileMenu'), overlay = $('mobileOverlay'), hamburger = $('hamburger');
+            if (menu) menu.classList.remove('open'); if (overlay) overlay.classList.remove('open'); if (hamburger) hamburger.classList.remove('active');
         }
-
         function showArticle(id) {
             $('homeContent').style.display = 'none';
             $('home').style.display = 'none';
@@ -581,7 +1108,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
         }
-
         function showHome() {
             $('homeContent').style.display = 'block';
             $('home').style.display = 'block';
@@ -590,7 +1116,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
         }
-
         function scrollToSection(id) {
             setTimeout(() => {
                 const el = $(id);
@@ -601,70 +1126,46 @@
                 }
             }, 100);
         }
-
         let donationType = 'once';
         let selectedAmount = 50;
-
         function setDonationType(type) {
             donationType = type;
-            document.querySelectorAll('.donation-tabs button').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.type === type);
-            });
+            document.querySelectorAll('.donation-tabs button').forEach(btn => btn.classList.toggle('active', btn.dataset.type === type));
         }
-
         function selectAmount(amount) {
             selectedAmount = amount;
-            document.querySelectorAll('.amount-btn').forEach(btn => {
-                btn.classList.toggle('selected', parseInt(btn.dataset.amount) === amount);
-            });
-            const field = $('customAmount');
-            if (field) field.value = amount;
+            document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.toggle('selected', parseInt(btn.dataset.amount) === amount));
+            const field = $('customAmount'); if (field) field.value = amount;
         }
-
         function customAmountChanged(value) {
             if (value && parseFloat(value) > 0) {
                 document.querySelectorAll('.amount-btn').forEach(btn => btn.classList.remove('selected'));
                 selectedAmount = parseFloat(value);
             }
         }
-
         function getFinalAmount() {
             const customVal = $('customAmount') ? $('customAmount').value : '';
             let amount = selectedAmount;
-            if (customVal && parseFloat(customVal) > 0) {
-                amount = parseFloat(customVal);
-            }
+            if (customVal && parseFloat(customVal) > 0) amount = parseFloat(customVal);
             return amount;
         }
-
         function showDonation() {
-            console.log('📍 showDonation called');
-            const homeContent = $('homeContent');
-            const home = $('home');
-            const donationPage = $('donation-page');
-            const errorsEl = $('payment-element-errors');
-
+            const homeContent = $('homeContent'), home = $('home'), donationPage = $('donation-page'), errorsEl = $('payment-element-errors');
             if (!donationPage) { console.error('❌ donation-page element not found'); return; }
-
             if (homeContent) homeContent.style.display = 'none';
             if (home) home.style.display = 'none';
             document.querySelectorAll('.article-page').forEach(el => el.classList.remove('active'));
             donationPage.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
             closeMobileMenu();
-
-            setDonationType('once');
-            selectAmount(50);
+            setDonationType('once'); selectAmount(50);
             if ($('customAmount')) $('customAmount').value = '';
             if (errorsEl) errorsEl.textContent = '';
-
             setTimeout(() => { setupPaymentElement(50); }, 300);
         }
-
         function showContact(e) {
             if (e) e.preventDefault();
-            const section = $('contact-section');
-            showHome();
+            const section = $('contact-section'); showHome();
             setTimeout(() => {
                 if (section) {
                     section.style.display = 'block';
@@ -675,123 +1176,61 @@
             }, 300);
             closeMobileMenu();
         }
-
         function submitForm(e) {
             e.preventDefault();
-            const form = $('contactForm');
-            const confirm = $('confirmation');
+            const form = $('contactForm'), confirm = $('confirmation');
             if (confirm) confirm.classList.add('show');
             if (form) form.reset();
             setTimeout(() => { if (confirm) confirm.classList.remove('show'); }, 5000);
         }
-
         async function setupPaymentElement(amount) {
             if (!amount || amount <= 0) return false;
-
             const errorsEl = $('payment-element-errors');
             const isMonthly = donationType === 'monthly';
-
             try {
                 let stripeClient;
-                try {
-                    stripeClient = getStripe();
-                } catch (stripeErr) {
-                    if (errorsEl) errorsEl.textContent = stripeErr.message;
-                    console.error('❌ Stripe init failed:', stripeErr.message);
-                    return false;
-                }
-
+                try { stripeClient = getStripe(); }
+                catch (stripeErr) { if (errorsEl) errorsEl.textContent = stripeErr.message; return false; }
                 const response = await fetch(`${SUPABASE_PROJECT_URL}/functions/v1/${EDGE_FUNCTION_NAME}`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        amount: amount,
-                        currency: 'usd',
-                        email: 'donor@example.com',
-                        donationType: isMonthly ? 'monthly' : 'once',
-                        productId: isMonthly ? 'prod_V3uuGCQASzjOOh' : undefined,
-                        createPaymentIntent: true
-                    })
+                    method: 'POST', headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ amount, currency: 'usd', email: 'donor@example.com', donationType: isMonthly ? 'monthly' : 'once', productId: isMonthly ? 'prod_V3uuGCQASzjOOh' : undefined, createPaymentIntent: true })
                 });
-
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({}));
-                    throw new Error(errorData?.error || `HTTP error ${response.status}`);
-                }
-
+                if (!response.ok) { const errorData = await response.json().catch(() => ({})); throw new Error(errorData?.error || `HTTP error ${response.status}`); }
                 const data = await response.json();
                 if (!data.clientSecret) throw new Error('No clientSecret returned from server.');
-
                 paymentIntentClientSecret = data.clientSecret;
-
-                if (elements) {
-                    elements.update({ clientSecret: paymentIntentClientSecret });
-                } else {
+                if (elements) { elements.update({ clientSecret: paymentIntentClientSecret }); }
+                else {
                     elements = stripeClient.elements({
                         clientSecret: paymentIntentClientSecret,
-                        appearance: {
-                            theme: 'stripe',
-                            variables: {
-                                colorPrimary: '#0066a1',
-                                colorBackground: '#ffffff',
-                                colorText: '#17384a',
-                                fontFamily: 'Arial, sans-serif',
-                                borderRadius: '8px',
-                            },
-                        },
+                        appearance: { theme: 'stripe', variables: { colorPrimary: '#0066a1', colorBackground: '#ffffff', colorText: '#17384a', fontFamily: 'Arial, sans-serif', borderRadius: '8px' } }
                     });
-
-                    paymentElement = elements.create('payment', {
-                        layout: 'tabs',
-                        business: { name: 'UNICEF' },
-                    });
-
+                    paymentElement = elements.create('payment', { layout: 'tabs', business: { name: 'UNICEF' } });
                     paymentElement.mount('#payment-element');
-
-                    paymentElement.on('change', function(event) {
-                        if (errorsEl) errorsEl.textContent = event.error ? event.error.message : '';
-                    });
+                    paymentElement.on('change', function(event) { if (errorsEl) errorsEl.textContent = event.error ? event.error.message : ''; });
                 }
-
                 return true;
-
             } catch (err) {
                 console.error('Payment Element setup error:', err);
                 if (errorsEl) errorsEl.textContent = err.message;
                 return false;
             }
         }
-
         async function processDonation() {
-            const donateBtn = $('donateSubmitBtn');
-            const errorsEl = $('payment-element-errors');
+            const donateBtn = $('donateSubmitBtn'), errorsEl = $('payment-element-errors');
             const amount = getFinalAmount();
-
-            if (!amount || amount <= 0) {
-                showToast('Please enter a valid donation amount.');
-                return;
-            }
-
-            donateBtn.disabled = true;
-            donateBtn.textContent = 'Processing…';
-            showLoading();
-
+            if (!amount || amount <= 0) { showToast('Please enter a valid donation amount.'); return; }
+            donateBtn.disabled = true; donateBtn.textContent = 'Processing…'; showLoading();
             try {
                 const isSetup = await setupPaymentElement(amount);
                 if (!isSetup) throw new Error('Failed to initialize payment method.');
-
                 await elements.submit();
-
                 const { error, paymentIntent } = await stripe.confirmPayment({
-                    elements: elements,
-                    clientSecret: paymentIntentClientSecret,
-                    confirmParams: { return_url: window.location.href + '?payment=success' },
+                    elements, clientSecret: paymentIntentClientSecret,
+                    confirmParams: { return_url: window.location.href + '?payment=success' }
                 });
-
-                if (error) {
-                    showToast('Payment failed: ' + error.message);
-                    if (errorsEl) errorsEl.textContent = error.message;
-                } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+                if (error) { showToast('Payment failed: ' + error.message); if (errorsEl) errorsEl.textContent = error.message; }
+                else if (paymentIntent && paymentIntent.status === 'succeeded') {
                     const typeLabel = donationType === 'once' ? 'one-time' : 'monthly';
                     showToast(`✅ Thank you for your ${typeLabel} donation of $${amount.toFixed(2)}!`);
                     $('customAmount').value = '';
@@ -801,51 +1240,26 @@
                 } else if (paymentIntent && paymentIntent.status === 'requires_action') {
                     showToast('Please complete the authentication step.');
                 }
-
             } catch (err) {
-                console.error(err);
-                showToast('Error: ' + err.message);
+                console.error(err); showToast('Error: ' + err.message);
                 if (errorsEl) errorsEl.textContent = err.message;
             } finally {
-                donateBtn.disabled = false;
-                donateBtn.textContent = 'Donate now';
-                hideLoading();
+                donateBtn.disabled = false; donateBtn.textContent = 'Donate now'; hideLoading();
             }
         }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            const btn = $('donateSubmitBtn');
-            if (btn) btn.addEventListener('click', processDonation);
-        });
-
         function initPage() {
-            const contactSection = $('contact-section');
-            const homeContent = $('homeContent');
-            const home = $('home');
-            const donationPage = $('donation-page');
-            const btn = $('donateSubmitBtn');
-
+            const contactSection = $('contact-section'), homeContent = $('homeContent'), home = $('home'), donationPage = $('donation-page'), btn = $('donateSubmitBtn');
             if (contactSection) contactSection.style.display = 'none';
             if (homeContent) homeContent.style.display = 'block';
             if (home) home.style.display = 'block';
             if (donationPage) donationPage.classList.remove('active');
-
             if (btn) btn.addEventListener('click', processDonation);
-
             selectedAmount = 50;
-            document.querySelectorAll('.amount-btn').forEach(b => {
-                b.classList.toggle('selected', parseInt(b.dataset.amount) === 50);
-            });
-
+            document.querySelectorAll('.amount-btn').forEach(b => b.classList.toggle('selected', parseInt(b.dataset.amount) === 50));
             console.log('✅ Page initialized');
         }
-
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initPage);
-        } else {
-            initPage();
-        }
-
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initPage);
+        else initPage();
         window.toggleMobileMenu = toggleMobileMenu;
         window.closeMobileMenu = closeMobileMenu;
         window.showHome = showHome;
@@ -861,4 +1275,4 @@
         window.setupPaymentElement = setupPaymentElement;
     </script>
 </body>
-</html>
+            </html>
